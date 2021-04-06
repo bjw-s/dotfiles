@@ -11,11 +11,6 @@ direnv hook fish | source
 status --is-interactive; and pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
-# Set up completions
-{{- if (eq $kubernetes }}
-flux completion fish | source
-{{- end }}
-
 # Set up paths
 fish_add_path "/usr/local/sbin"
 
