@@ -1,8 +1,10 @@
-{{- $personal := false -}}{{/* true if this machine should have personal secrets from BitWarden */}}
+{{- $personal := false -}}{{/* true if this is a personal machine */}}
+{{- $work := false -}}{{/* true if this is a work machine */}}
 {{- $docker := false -}}{{/* true if this machine is used for local Docker work */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 
 {{- $personal = promptBool "personal" -}}
+{{- $work = promptBool "work" -}}
 {{- $docker = promptBool "docker" -}}
 {{- $kubernetes = promptBool "kubernetes" -}}
 
@@ -12,3 +14,7 @@ sourceDir: {{ .chezmoi.homeDir }}/Development/source_code/github.com/bjw-s/dotfi
 data:
   bash: "/usr/bin/env bash"
   fish: "/usr/bin/env fish"
+  personal: "{{ $personal }}"
+  work: "{{ $work }}"
+  docker: "{{ $docker }}"
+  kubernetes: "{{ $kubernetes }}"
