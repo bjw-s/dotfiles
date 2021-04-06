@@ -1,0 +1,6 @@
+Host *
+   {{- if .personal }}
+   IdentityFile {{ .chezmoi.homeDir }}/.ssh/id_personal
+   {{- else }}
+   IdentityFile {{ .chezmoi.homeDir }}/.ssh/id_work
+   {{- end }}

@@ -1,0 +1,26 @@
+[credential]
+helper=osxkeychain
+
+[core]
+excludesfile=/Users/berndschorgers/.gitignore
+autocrlf=input
+
+[user]
+name=Bᴇʀɴᴅ Sᴄʜᴏʀɢᴇʀs
+email=me@bjw-s.dev
+signingkey=0x80FF2B2CE4316DEE
+
+[commit]
+gpgsign=true
+
+[gpg]
+program=gpg
+
+[gitget]
+root=/Users/berndschorgers/Development/source_code
+host=github.com
+
+[pull]
+rebase = false
+[init]
+defaultBranch = main
