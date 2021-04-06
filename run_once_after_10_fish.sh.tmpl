@@ -2,7 +2,7 @@
 
 chezmoi completion fish --output {{ .chezmoi.homeDir }}/.config/fish/completions/chezmoi.fish
 
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+type fisher &>/dev/null || curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
 fisher install franciscolourenco/done
 fisher install jethrokuan/fzf
