@@ -1,11 +1,9 @@
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from BitWarden */}}
-{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
-{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $docker := false -}}{{/* true if this machine is used for local Docker work */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 
 {{- $personal = promptBool "personal" -}}
-{{- $headless = promptBool "headless" -}}
-{{- $transient = promptBool "transient" -}}
+{{- $docker = promptBool "docker" -}}
 {{- $kubernetes = promptBool "kubernetes" -}}
 
 format: yaml
