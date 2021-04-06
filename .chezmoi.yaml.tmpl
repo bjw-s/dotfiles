@@ -1,0 +1,16 @@
+{{- $personal := false -}}{{/* true if this machine should have personal secrets from BitWarden */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
+
+{{- $personal = promptBool "personal" -}}
+{{- $headless = promptBool "headless" -}}
+{{- $transient = promptBool "transient" -}}
+{{- $kubernetes = promptBool "kubernetes" -}}
+
+format: yaml
+sourceDir: {{ .chezmoi.homeDir }}/Development/source_code/github.com/bjw-s/dotfiles
+
+data:
+  bash: "/usr/bin/env bash"
+  fish: "/usr/bin/env fish"

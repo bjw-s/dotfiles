@@ -1,0 +1,24 @@
+# Set up colors for LS_COLORS
+eval (gdircolors -c {{ .chezmoi.homeDir }}/.dircolors)
+
+# Initialize starship
+starship init fish | source
+
+# Set up direnv
+direnv hook fish | source
+
+# Initialize pyenv
+status --is-interactive; and pyenv init - | source
+status --is-interactive; and pyenv virtualenv-init - | source
+
+# Set up completions
+{{- if (eq $kubernetes }}
+flux completion fish | source
+{{- end }}
+
+# Set up paths
+fish_add_path "/usr/local/sbin"
+
+{{- if (eq .chezmoi.os "darwin") }}
+set -gx HOMEBREW_NO_ANALYTICS 1
+{{- end }}

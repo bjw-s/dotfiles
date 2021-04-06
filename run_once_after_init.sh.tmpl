@@ -1,0 +1,19 @@
+#!{{ .fish }}
+
+chezmoi completion fish --output {{ .chezmoi.homeDir }}/.config/fish/completions/chezmoi.fish
+
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+fisher install franciscolourenco/done
+fisher install jethrokuan/fzf
+fisher install jethrokuan/z
+fisher install jorgebucaran/fisher
+fisher install oh-my-fish/plugin-bang-bang
+
+{{- if (eq $docker }}
+curl -sL -o {{ .chezmoi.homeDir }}/.config/fish/completions/docker.fish https://github.com/docker/cli/blob/master/contrib/completion/fish/docker.fish
+{{- end }}
+
+{{- if (eq $kubernetes }}
+fisher install evanlucas/fish-kubectl-completions
+{{- end }}
