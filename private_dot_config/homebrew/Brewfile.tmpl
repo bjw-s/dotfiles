@@ -1,0 +1,73 @@
+{{- if (eq .chezmoi.os "darwin") }}
+cask_args appdir: "/Applications"
+tap "esolitos/ipa" # Required for sshpass
+tap "go-task/tap" # Required for go-task
+tap "grdl/tap" # Required for git-get
+tap "dty1er/tap" # Required for kubecolor
+tap "fluxcd/tap" # Required for flux
+tap "johanhaleby/kubetail" # Required for kubetail
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-drivers"
+
+brew "mas"
+
+mas "Amphetamine", id: 937984704
+mas "MQTT Explorer", id: 1455214828
+mas "Reeder", id: 1529448980
+mas "Slack", id: 803453959
+mas "Soulver 2", id: 413965349
+mas "Twitterific", id: 1289378661
+mas "Wipr", id: 1320666476
+mas "Wireguard", id: 1451685025
+
+cask "1Password"
+cask "alfred"
+cask "android-platform-tools"
+cask "anylist"
+cask "chronosync"
+cask "discord"
+cask "docker"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-hack-nerd-font"
+cask "gpg-suite"
+cask "iina"
+cask "karabiner-elements"
+cask "keyboard-maestro"
+cask "makemkv"
+cask "setapp"
+cask "superduper"
+cask "visual-studio-code"
+cask "whatsapp"
+cask "xca"
+
+brew 'coreutils'
+brew 'direnv'
+brew 'ffmpeg'
+brew 'findutils'
+brew 'fish'
+brew 'fluxcd/tap/flux'
+brew 'fzf'
+brew 'git'
+brew 'grdl/tap/git-get'
+brew 'git-flow'
+brew 'go'
+brew 'go-task/tap/go-task'
+brew 'helm'
+brew 'jq'
+brew 'dty1er/tap/kubecolor'
+brew 'kubernetes-cli'
+brew 'kubeseal'
+brew 'johanhaleby/kubetail/kubetail'
+brew 'minio-mc'
+brew 'neofetch'
+brew 'pinentry-mac'
+brew 'pre-commit'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+brew 'shellcheck'
+brew 'esolitos/ipa/sshpass'
+brew 'starship'
+brew 'terminal-notifier'
+brew 'youtube-dl'
+brew 'yq'
+{{- end }}

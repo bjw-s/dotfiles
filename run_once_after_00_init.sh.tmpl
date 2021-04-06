@@ -1,0 +1,7 @@
+#!{{ .bash }}
+
+{{- if (eq .chezmoi.os "darwin") }}
+# Set up Homebrew
+type brew &>/dev/null || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+brew bundle --file {{ .chezmoi.homeDir }}/.config/homebrew/Brewfile
+{{- end }}
