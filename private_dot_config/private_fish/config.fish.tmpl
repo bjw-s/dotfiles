@@ -9,10 +9,10 @@ direnv hook fish | source
 
 # Initialize pyenv
 status --is-interactive; and pyenv init - | source
-status --is-interactive; and pyenv virtualenv-init - | source
 
 # Set up paths
 fish_add_path "/usr/local/sbin"
+fish_add_path "/usr/local/opt/grep/libexec/gnubin"
 
 {{- if (eq .chezmoi.os "darwin") }}
 set -gx HOMEBREW_NO_ANALYTICS 1
