@@ -2,18 +2,23 @@
 eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 
 # Initialize starship
+set -gx STARSHIP_CONFIG {{ .chezmoi.homeDir }}/.config/starship/config.toml
 starship init fish | source
+
+# Set up zoxide
+zoxide init fish | source
 
 # Set up direnv
 direnv hook fish | source
 
 # Initialize pyenv
-status --is-interactive; and pyenv init - | source
+status is-login; and pyenv init --path | source
+pyenv init - | source
 
 # Set up paths
 fish_add_path "/usr/local/sbin"
 fish_add_path "/usr/local/opt/grep/libexec/gnubin"
 
-{{- if (eq .chezmoi.os "darwin") }}
+{{ if (eq .chezmoi.os "darwin") }}
 set -gx HOMEBREW_NO_ANALYTICS 1
 {{- end }}

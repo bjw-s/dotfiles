@@ -1,0 +1,24 @@
+#!{{ .bash }}
+
+# Install fish completions
+if [ -d {{ .chezmoi.homeDir }}/.config/fish/completions ]; then
+    if command -v chezmoi &> /dev/null; then
+        chezmoi completion fish --output {{ .chezmoi.homeDir }}/.config/fish/completions/chezmoi.fish
+    fi
+    if command -v flux &> /dev/null; then
+        flux completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/flux.fish
+    fi
+    if command -v helm &> /dev/null; then
+        helm completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/helm.fish
+    fi
+    if command -v kustomize &> /dev/null; then
+        kustomize completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/kustomize.fish
+    fi
+    if command -v velero &> /dev/null; then
+        velero completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/velero.fish
+    fi
+fi
+
+if ! command -v zoxide &> /dev/null; then
+  zoxide init
+fi

@@ -1,48 +1,55 @@
 {{- if (eq .chezmoi.os "darwin") }}
 cask_args appdir: "/Applications"
 tap "esolitos/ipa" # Required for sshpass
-tap "go-task/tap" # Required for go-task
 tap "grdl/tap" # Required for git-get
-tap "dty1er/tap" # Required for kubecolor
+tap "hidetatz/tap" # Required for kubecolor
 tap "fluxcd/tap" # Required for flux
-tap "johanhaleby/kubetail" # Required for kubetail
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-drivers"
 
 brew "mas"
 
+mas "1Blocker", id: 1365531024
 mas "Amphetamine", id: 937984704
+mas "Bitwarden", id: 1352778147
+mas "Keka", id: 470158793
 mas "MQTT Explorer", id: 1455214828
+mas "Parcel", id: 639968404
 mas "Reeder", id: 1529448980
-mas "Slack", id: 803453959
 mas "Soulver 2", id: 413965349
 mas "Twitterific", id: 1289378661
-mas "Wipr", id: 1320666476
 mas "Wireguard", id: 1451685025
 
-cask "1Password"
 cask "alfred"
 cask "android-platform-tools"
 cask "anylist"
+cask "autodesk-fusion360"
+cask "calibre"
 cask "chronosync"
 cask "discord"
 cask "docker"
+cask "drawio"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "gpg-suite"
 cask "iina"
-cask "karabiner-elements"
+cask "iterm2"
 cask "keyboard-maestro"
-cask "makemkv"
+cask "microsoft-edge"
+cask "plex"
+cask "raspberry-pi-imager"
+cask "rocket"
 cask "setapp"
-cask "superduper"
+cask "sonos"
+cask "superslicer"
 cask "visual-studio-code"
 cask "whatsapp"
-cask "xca"
 
+brew 'bat'
 brew 'coreutils'
 brew 'direnv'
-brew 'ffmpeg'
+brew 'dog'
+brew 'fd'
 brew 'findutils'
 brew 'fish'
 brew 'fluxcd/tap/flux'
@@ -50,24 +57,28 @@ brew 'fzf'
 brew 'grep'
 brew 'git'
 brew 'grdl/tap/git-get'
-brew 'git-flow'
+brew 'gnu-sed'
 brew 'go'
-brew 'go-task/tap/go-task'
 brew 'helm'
 brew 'jq'
-brew 'dty1er/tap/kubecolor'
+brew 'hidetatz/tap/kubecolor'
 brew 'kubernetes-cli'
-brew 'kubeseal'
-brew 'johanhaleby/kubetail/kubetail'
+brew 'lsd'
 brew 'minio-mc'
-brew 'neofetch'
 brew 'pinentry-mac'
 brew 'pre-commit'
 brew 'pyenv'
 brew 'shellcheck'
+brew 'sops'
 brew 'esolitos/ipa/sshpass'
 brew 'starship'
+brew 'stern'
+brew 'terraform'
 brew 'terminal-notifier'
-brew 'youtube-dl'
+brew 'tree'
+brew 'velero'
+brew 'wget'
+brew 'ykman'
 brew 'yq'
+brew 'zoxide'
 {{- end }}

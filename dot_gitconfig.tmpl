@@ -1,0 +1,40 @@
+[init]
+  defaultBranch = main
+
+{{ if (eq .chezmoi.os "darwin") -}}
+[credential]
+    helper = osxkeychain
+
+{{ end -}}
+[user]
+  {{- if .personal }}
+  name=Bᴇʀɴᴅ Sᴄʜᴏʀɢᴇʀs
+  email=me@bjw-s.dev
+  signingkey=0x80FF2B2CE4316DEE
+  {{- end }}
+
+[core]
+  excludesfile={{ .chezmoi.homeDir }}/.gitignore_global
+  autocrlf=input
+
+[commit]
+  gpgsign=true
+
+[merge]
+  ff = only
+
+[pull]
+  rebase = true
+
+[status]
+  submoduleSummary = false
+
+[tag]
+  forceSignAnnotated = true
+
+[gpg]
+  program=gpg
+
+[gitget]
+  root={{ .chezmoi.homeDir }}/Development/source_code
+  host=github.com

@@ -1,0 +1,21 @@
+[character]
+success_symbol = "\n[❯](bold green)"
+error_symbol = "\n[✖](bold red)"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[kubernetes]
+symbol = "ﴱ "
+format = 'on [ﴱ $context \($namespace\)](bold bright-green) '
+disabled = false
+[kubernetes.context_aliases]
+"default" = "cluster-0"
+
+[git_branch]
+symbol = " "

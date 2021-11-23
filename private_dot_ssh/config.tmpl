@@ -1,6 +1,4 @@
-Host *
-   {{- if .personal }}
+{{- if .personal -}}
+Host 10.1.*
    IdentityFile {{ .chezmoi.homeDir }}/.ssh/id_personal
-   {{- else }}
-   IdentityFile {{ .chezmoi.homeDir }}/.ssh/id_work
-   {{- end }}
+{{- end }}

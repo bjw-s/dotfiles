@@ -1,20 +1,11 @@
 {{- $personal := false -}}{{/* true if this is a personal machine */}}
-{{- $work := false -}}{{/* true if this is a work machine */}}
-{{- $docker := false -}}{{/* true if this machine is used for local Docker work */}}
-{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 
 {{- $personal = promptBool "personal" -}}
-{{- $work = promptBool "work" -}}
-{{- $docker = promptBool "docker" -}}
-{{- $kubernetes = promptBool "kubernetes" -}}
 
 format: yaml
 sourceDir: {{ .chezmoi.homeDir }}/Development/source_code/github.com/bjw-s/dotfiles
 
 data:
+  personal: {{ $personal }}
   bash: "/usr/bin/env bash"
   fish: "/usr/bin/env fish"
-  personal: {{ $personal }}
-  work: {{ $work }}
-  docker: {{ $docker }}
-  kubernetes: {{ $kubernetes }}
