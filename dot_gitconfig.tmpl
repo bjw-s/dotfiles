@@ -10,7 +10,7 @@
   {{- if .personal }}
   name=Bᴇʀɴᴅ Sᴄʜᴏʀɢᴇʀs
   email=me@bjw-s.dev
-  signingkey=0x80FF2B2CE4316DEE
+  signingkey=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMyYn4k4V+myBBl79Nt3t7EZugvz9A+d3ZbKyaP1w7J5
   {{- end }}
 
 [core]
@@ -33,7 +33,14 @@
   forceSignAnnotated = true
 
 [gpg]
+  {{- if .personal }}
+  format=ssh
+
+  [gpg.ssh]
+    allowedSignersFile={{ .chezmoi.homeDir }}/.ssh/authorized_signatures
+  {{- else }}
   program=gpg
+  {{- end }}
 
 [gitget]
   root={{ .chezmoi.homeDir }}/Development/source_code
