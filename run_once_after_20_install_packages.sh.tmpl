@@ -1,5 +1,4 @@
 #!{{ .fish }}
-
 {{- if (eq .chezmoi.os "darwin") }}
 # Brewfile hash: {{ include (joinPath .chezmoi.sourceDir "private_dot_config/homebrew/Brewfile.tmpl") | sha256sum }}
 if ! command -v brew &> /dev/null; then

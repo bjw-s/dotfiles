@@ -2,9 +2,7 @@
 cask_args appdir: "/Applications"
 tap "esolitos/ipa" # Required for sshpass
 tap "grdl/tap" # Required for git-get
-tap "hidetatz/tap" # Required for kubecolor
 tap "fluxcd/tap" # Required for flux
-tap "homebrew/cask-fonts"
 tap "homebrew/cask-drivers"
 
 brew "mas"
@@ -27,10 +25,7 @@ cask "autodesk-fusion360"
 cask "calibre"
 cask "chronosync"
 cask "discord"
-cask "docker"
 cask "drawio"
-cask "font-jetbrains-mono-nerd-font"
-cask "font-hack-nerd-font"
 cask "gpg-suite"
 cask "iina"
 cask "iterm2"
@@ -45,6 +40,7 @@ cask "superslicer"
 cask "visual-studio-code"
 cask "whatsapp"
 
+brew 'age'
 brew 'bat'
 brew 'coreutils'
 brew 'direnv'
@@ -59,10 +55,7 @@ brew 'git'
 brew 'grdl/tap/git-get'
 brew 'gnu-sed'
 brew 'go'
-brew 'helm'
 brew 'jq'
-brew 'hidetatz/tap/kubecolor'
-brew 'kubernetes-cli'
 brew 'lsd'
 brew 'minio-mc'
 brew 'pinentry-mac'
@@ -76,9 +69,24 @@ brew 'stern'
 brew 'terraform'
 brew 'terminal-notifier'
 brew 'tree'
-brew 'velero'
 brew 'wget'
 brew 'ykman'
 brew 'yq'
 brew 'zoxide'
+
+# Fonts
+tap "homebrew/cask-fonts"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-hack-nerd-font"
+
+{{ if $.kubernetes -}}
+# Kubernetes tools
+tap "hidetatz/tap" # Required for kubecolor
+cask "docker"
+brew 'helm'
+brew 'hidetatz/tap/kubecolor'
+brew 'kubernetes-cli'
+brew 'velero'
+{{- end }}
+
 {{- end }}

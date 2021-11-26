@@ -1,4 +1,16 @@
 .github
 
+{{- if ne .chezmoi.os "darwin" }}
+Library
+{{- end }}
+
+{{- if not $.agekey }}
+Library/Application Support/sops
+{{- end }}
+
+{{- if not $.kubernetes }}
+.kube
+{{- end }}
+
 LICENSE
 README.md

@@ -10,12 +10,14 @@ truncate_to_repo = true
 [package]
 disabled = true
 
+[git_branch]
+symbol = " "
+
+{{ if $.kubernetes -}}
 [kubernetes]
 symbol = "ﴱ "
 format = 'on [ﴱ $context \($namespace\)](bold bright-green) '
 disabled = false
 [kubernetes.context_aliases]
 "default" = "cluster-0"
-
-[git_branch]
-symbol = " "
+{{- end }}
