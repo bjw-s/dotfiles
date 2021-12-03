@@ -21,4 +21,7 @@ fish_add_path "/usr/local/opt/grep/libexec/gnubin"
 
 {{ if (eq .chezmoi.os "darwin") }}
 set -gx HOMEBREW_NO_ANALYTICS 1
+
+# Initialize zoxide
+zoxide init fish | source
 {{- end }}
