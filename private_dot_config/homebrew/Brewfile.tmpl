@@ -1,7 +1,6 @@
 {{- if (eq .chezmoi.os "darwin") }}
 cask_args appdir: "/Applications"
 tap "esolitos/ipa" # Required for sshpass
-tap "grdl/tap" # Required for git-get
 tap "fluxcd/tap" # Required for flux
 tap "homebrew/cask-drivers"
 
@@ -22,6 +21,8 @@ cask "alfred"
 cask "android-platform-tools"
 cask "anylist"
 cask "autodesk-fusion360"
+cask "bartender"
+cask "bettertouchtool"
 cask "calibre"
 cask "chronosync"
 cask "discord"
@@ -52,7 +53,6 @@ brew 'fluxcd/tap/flux'
 brew 'fzf'
 brew 'grep'
 brew 'git'
-brew 'grdl/tap/git-get'
 brew 'gnu-sed'
 brew 'go'
 brew 'jq'
