@@ -10,36 +10,23 @@ mas "1Blocker", id: 1365531024
 mas "1Password", id: 1333542190
 mas "Amphetamine", id: 937984704
 mas "Keka", id: 470158793
-mas "MQTT Explorer", id: 1455214828
-mas "Parcel", id: 639968404
-mas "Reeder", id: 1529448980
 mas "Soulver 2", id: 413965349
-mas "Twitterific", id: 1289378661
 mas "Wireguard", id: 1451685025
 
 cask "alfred"
 cask "android-platform-tools"
-cask "anylist"
-cask "autodesk-fusion360"
 cask "bartender"
 cask "bettertouchtool"
-cask "calibre"
 cask "chronosync"
 cask "discord"
 cask "drawio"
+cask "forklift"
 cask "gpg-suite"
-cask "iina"
 cask "iterm2"
-cask "keyboard-maestro"
+cask "maccy"
 cask "microsoft-edge"
-cask "plex"
-cask "raspberry-pi-imager"
 cask "rocket"
-cask "setapp"
-cask "sonos"
-cask "superslicer"
 cask "visual-studio-code"
-cask "whatsapp"
 
 brew 'age'
 brew 'bat'
@@ -78,6 +65,25 @@ brew 'zoxide'
 tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-hack-nerd-font"
+
+{{ if $.personal -}}
+# Personal tools
+mas "Home Assistant", id: 1099568401
+mas "MQTT Explorer", id: 1455214828
+mas "Parcel", id: 639968404
+mas "Reeder", id: 1529448980
+mas "Twitterific", id: 1289378661
+
+cask "anylist"
+cask "autodesk-fusion360"
+cask "calibre"
+cask "iina"
+cask "plex"
+cask "raspberry-pi-imager"
+cask "sonos"
+cask "superslicer"
+cask "whatsapp"
+{{- end }}
 
 {{ if $.kubernetes -}}
 # Kubernetes tools
