@@ -1,8 +1,12 @@
-{{- if (eq .chezmoi.os "darwin") }}
 # Mac OS X hidden files
 .DS_Store
-{{- end }}
+
+# Windows files
+Thumbs.db
 
 # Direnv
 .direnv
 .envrc
+
+# Sops
+.decrypted~*
