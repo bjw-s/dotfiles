@@ -14,7 +14,4 @@ if [ -d {{ .chezmoi.homeDir }}/.config/fish/completions ]; then
     if command -v kustomize &> /dev/null; then
         kustomize completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/kustomize.fish
     fi
-    if command -v velero &> /dev/null; then
-        velero completion fish > {{ .chezmoi.homeDir }}/.config/fish/completions/velero.fish
-    fi
 fi

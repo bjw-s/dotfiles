@@ -1,30 +1,38 @@
 # Set up colors for LS_COLORS
+{{- if (eq .chezmoi.os "darwin") }}
 eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
+{{- else }}
+eval (dircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
+{{- end }}
 
 # Initialize starship
 set -gx STARSHIP_CONFIG {{ .chezmoi.homeDir }}/.config/starship/config.toml
 starship init fish | source
 
 # Set up zoxide
-zoxide init fish | source
+if type -q zoxide
+    zoxide init fish | source
+end
 
 # Set up direnv
-direnv hook fish | source
+if type -q direnv
+    direnv hook fish | source
+end
 
 # Initialize pyenv
-status is-login; and pyenv init --path | source
-pyenv init - | source
+if type -q pyenv
+    status is-login; and pyenv init --path | source
+    pyenv init - | source
+end
 
 # Set up paths
 fish_add_path "/usr/local/sbin"
-fish_add_path "/usr/local/opt/grep/libexec/gnubin"
 
 {{ if (eq .chezmoi.os "darwin") }}
+fish_add_path "/usr/local/opt/grep/libexec/gnubin"
+
 # Set up homebrew
 fish_add_path "/opt/homebrew/bin"
 fish_add_path "/opt/homebrew/sbin"
 set -gx HOMEBREW_NO_ANALYTICS 1
-
-# Initialize zoxide
-zoxide init fish | source
 {{- end }}

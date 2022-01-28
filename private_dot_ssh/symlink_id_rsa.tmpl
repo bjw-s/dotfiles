@@ -1,1 +1,5 @@
+{{ if $.personal -}}
 {{ .chezmoi.homeDir }}/.ssh/id_personal
+{{ else }}
+{{ .chezmoi.homeDir }}/.ssh/id_work
+{{ end }}

@@ -11,7 +11,4 @@ function update_completions --description 'Update shell completions'
   if type -q kustomize
     kustomize completion fish > ~/.config/fish/completions/kustomize.fish
   end
-  if type -q velero
-    velero completion fish > ~/.config/fish/completions/velero.fish
-  end
 end
