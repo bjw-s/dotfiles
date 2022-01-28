@@ -3,8 +3,14 @@
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
 
-{{- $hostname := .chezmoi.hostname -}}
-{{- if eq $hostname "Ironwolf" -}}
+{{- $hostname := "" -}}
+{{- if (eq .chezmoi.os "darwin") -}}
+  {{- $hostname = output "scutil" "--get" "LocalHostName" | trim -}}
+{{- else -}}
+  {{- $hostname = .chezmoi.hostname -}}
+{{- end -}}
+
+{{- if eq $hostname "bjw-s-macbook" -}}
   {{- $personal = true -}}
   {{- $agekey = true -}}
   {{- $kubernetes = true -}}
