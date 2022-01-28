@@ -20,7 +20,7 @@ Install [chezmoi](https://www.chezmoi.io/docs/install/#one-line-package-install)
 ## Initizalize chezmoi
 
 ```sh
-chezmoi --source ~/Development/source_code/github.com/bjw-s/dotfiles init https://github.com/bjw-s/dotfiles.git
+chezmoi --source ~/Development/source_code/git/github.com/bjw-s/dotfiles init https://github.com/bjw-s/dotfiles.git
 ```
 
 ## Deploy dotfiles
