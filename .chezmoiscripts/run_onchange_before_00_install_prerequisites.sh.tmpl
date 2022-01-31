@@ -1,0 +1,16 @@
+#!{{ lookPath "bash"}}
+{{ if not (lookPath "brew") -}}
+{{- if eq .chezmoi.os "darwin" -}}
+# Install HomeBrew
+{{ lookPath "bash"}} -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{- end }}
+{{- end }}
+
+{{- if (not (stat (joinPath .chezmoi.homeDir ".config/fish/functions/fisher.fish"))) -}}
+# Install fish
+{{- if eq .chezmoi.os "darwin" -}}
+yay --needed community/fish
+{{- else if eq .chezmoi.os "darwin" -}}
+brew install fish
+{{- end }}
+{{- end }}

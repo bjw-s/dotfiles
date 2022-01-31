@@ -1,0 +1,18 @@
+community/fish
+community/kitty
+community/starship
+core/ca-certificates
+core/p11-kit
+extra/python-pip
+aur/nerd-fonts-jetbrains-mono
+aur/espanso-git
+aur/ulauncher
+aur/viddy
+aur/visual-studio-code-bin
+
+{{- if $.kubernetes }}
+community/helm
+community/kubectl
+community/kubie
+aur/kubecolor
+{{- end }}

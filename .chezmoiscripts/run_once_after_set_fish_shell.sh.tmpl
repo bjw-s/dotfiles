@@ -5,7 +5,7 @@ if ! grep -q "${fish_path}" "/etc/shells"; then
   sudo sh -c "echo ${fish_path} >> /etc/shells"
 fi
 
-{{- if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.os "linux" -}}
 current_shell=$(getent passwd {{ .chezmoi.username }} | cut -d: -f7)
 {{- else if eq .chezmoi.os "darwin" }}
 current_shell=$(dscl . -read {{ .chezmoi.homeDir }} UserShell)
