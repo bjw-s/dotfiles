@@ -1,8 +1,0 @@
-#!{{ .fish }}
-
-type fisher &>/dev/null || curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-
-# fisher_plugins hash: {{ include (joinPath .chezmoi.sourceDir "private_dot_config/private_fish/private_fisher_plugins.tmpl") | sha256sum }}
-for plugin in (cat "{{ .chezmoi.homeDir }}/.config/fish/fisher_plugins")
-  fisher install $plugin
-end

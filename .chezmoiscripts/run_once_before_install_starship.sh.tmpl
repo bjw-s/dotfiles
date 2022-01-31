@@ -1,0 +1,9 @@
+{{- if not (lookPath "starship") -}}
+{{- if eq .chezmoi.os "linux" -}}
+#!{{ lookPath "sh"}}
+sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
+{{- else if eq .chezmoi.os "darwin" -}}
+#!{{ lookPath "bash"}}
+brew install starship
+{{- end }}
+{{- end }}
