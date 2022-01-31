@@ -51,9 +51,11 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  {{ if eq .chezmoi.os "darwin" -}}
+  padding:
+    x: 3
+    y: 3
+  {{- end }}
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
