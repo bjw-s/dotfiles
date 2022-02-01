@@ -5,6 +5,11 @@ eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 eval (dircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 {{- end }}
 
+{{ if eq .chezmoi.os "linux" -}}
+# Configure GPG
+set -gx GPG_TTY (tty)
+{{- end }}
+
 # Initialize starship
 set -gx STARSHIP_CONFIG {{ .chezmoi.homeDir }}/.config/starship/config.toml
 starship init fish | source
