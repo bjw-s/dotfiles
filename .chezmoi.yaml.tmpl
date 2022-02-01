@@ -1,4 +1,5 @@
 {{- $personal := false -}}{{/* true if this is a personal machine */}}
+{{- $work := false -}}{{/* true if this is a work machine */}}
 
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
 {{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
@@ -12,10 +13,12 @@
 
 {{- if eq $hostname "bjw-s-macbook" -}}
   {{- $personal = true -}}
+  {{- $work = false -}}
   {{- $agekey = true -}}
   {{- $kubernetes = true -}}
 {{- else if eq $hostname "sectigo-laptop" -}}
   {{- $personal = false -}}
+  {{- $work = true -}}
   {{- $agekey = true -}}
   {{- $kubernetes = true -}}
 {{- end -}}
@@ -25,6 +28,7 @@ sourceDir: {{ .chezmoi.homeDir }}/Development/source_code/git/github.com/bjw-s/d
 
 data:
   personal: {{ $personal }}
+  work: {{ $work }}
   agekey: {{ $agekey }}
   kubernetes: {{ $kubernetes }}
 
