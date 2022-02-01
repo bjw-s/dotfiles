@@ -6,4 +6,4 @@ max-cache-ttl-ssh 7200
 pinentry-program {{ lookPath "pinentry-qt" }}
 {{ else if eq .chezmoi.os "darwin" -}}
 pinentry-program {{ lookPath "pinentry-mac" }}
-{{- end -}}
+{{- end }}

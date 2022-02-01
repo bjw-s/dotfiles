@@ -31,8 +31,11 @@
   root={{ $gitroot }}
   host=github.com
 
+{{- if $.work -}}
 [includeIf "gitdir:{{ $gitroot }}/sectigo-eng/"]
         path = ~/.gitconfig_work
+
+{{- end }}
 
 [includeIf "gitdir:{{ $gitroot }}/github.com/"]
         path = ~/.gitconfig_personal
