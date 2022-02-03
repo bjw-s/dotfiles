@@ -1,7 +1,7 @@
 # Set up colors for LS_COLORS
 {{- if (eq .chezmoi.os "darwin") }}
 eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
-{{- else }}
+{{- else if eq .chezmoi.os "linux" }}
 eval (dircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 {{- end }}
 
@@ -24,16 +24,17 @@ if type -q direnv
     direnv hook fish | source
 end
 
-# Initialize pyenv
-if type -q pyenv
-    status is-login; and pyenv init --path | source
-    pyenv init - | source
-end
+# Initialize asdf
+{{- if (eq .chezmoi.os "darwin") }}
+source (brew --prefix asdf)/libexec/asdf.fish
+{{- else if eq .chezmoi.os "linux" }}
+source /opt/asdf-vm/asdf.fish
+{{- end }}
 
 # Set up paths
 fish_add_path "/usr/local/sbin"
 
-{{ if (eq .chezmoi.os "darwin") }}
+{{ if (eq .chezmoi.os "darwin") -}}
 fish_add_path "/usr/local/opt/grep/libexec/gnubin"
 
 # Set up homebrew
