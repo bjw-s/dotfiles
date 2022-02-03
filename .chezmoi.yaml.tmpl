@@ -16,21 +16,31 @@
   {{- $work = false -}}
   {{- $agekey = true -}}
   {{- $kubernetes = true -}}
-{{- else if eq $hostname "sectigo-laptop" -}}
+{{- else if eq $hostname "gizmo" -}}
   {{- $personal = false -}}
   {{- $work = true -}}
   {{- $agekey = true -}}
   {{- $kubernetes = true -}}
 {{- end -}}
 
+{{- $srcRoot := (joinPath .chezmoi.homeDir "Development/src") -}}
+{{- $sourceDir := "" -}}
+{{- $dotfilesrepo := "bjw-s/dotfiles" -}}
+{{- if $personal -}}
+  {{- $sourceDir = (printf "%s/github.com/%s" $srcRoot $dotfilesrepo) -}}
+{{- else if $work -}}
+  {{- $sourceDir = (printf "%s/personal/github.com/%s" $srcRoot $dotfilesrepo) -}}
+{{- end -}}
+
 format: yaml
-sourceDir: {{ .chezmoi.homeDir }}/Development/source_code/git/github.com/bjw-s/dotfiles
+sourceDir: {{ $sourceDir }}
 
 data:
   personal: {{ $personal }}
   work: {{ $work }}
   agekey: {{ $agekey }}
   kubernetes: {{ $kubernetes }}
+  srcroot: {{ $srcRoot }}
 
 encryption: age
 
