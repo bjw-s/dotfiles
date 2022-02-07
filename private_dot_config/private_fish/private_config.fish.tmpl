@@ -1,8 +1,6 @@
 # Set up colors for LS_COLORS
 {{- if (eq .chezmoi.os "darwin") }}
 eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
-{{- else if eq .chezmoi.os "linux" }}
-eval (dircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 {{- end }}
 
 {{ if eq .chezmoi.os "linux" -}}
