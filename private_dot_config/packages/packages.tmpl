@@ -1,3 +1,4 @@
+{{- if (eq .chezmoi.os "linux") }}
 community/age
 community/alacritty
 community/direnv
@@ -39,4 +40,6 @@ aur/openvpn-update-systemd-resolved
 aur/ringcentral-bin
 aur/teams
 aur/zoom
+{{- end }}
+
 {{- end }}
