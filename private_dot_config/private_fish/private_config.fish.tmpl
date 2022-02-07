@@ -8,27 +8,6 @@ eval (gdircolors -c {{ .chezmoi.homeDir }}/.config/dircolors)
 set -gx GPG_TTY (tty)
 {{- end }}
 
-# Initialize starship
-set -gx STARSHIP_CONFIG {{ .chezmoi.homeDir }}/.config/starship/config.toml
-starship init fish | source
-
-# Set up zoxide
-if type -q zoxide
-    zoxide init fish | source
-end
-
-# Initialize asdf
-{{- if (eq .chezmoi.os "darwin") }}
-source (brew --prefix asdf)/libexec/asdf.fish
-{{- else if eq .chezmoi.os "linux" }}
-source /opt/asdf-vm/asdf.fish
-{{- end }}
-
-# Set up direnv
-if type -q direnv
-    direnv hook fish | source
-end
-
 # Set up paths
 fish_add_path "/usr/local/sbin"
 
