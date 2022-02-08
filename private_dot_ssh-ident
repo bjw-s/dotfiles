@@ -9,6 +9,10 @@ MATCH_PATH = [
   [r"src/personal", "personal"],
 ]
 
+MATCH_ARGV = [
+  [r"^(git@)?(gist\.)?github\.com$", "personal"],
+]
+
 # This is optional - don't include any SSH_ADD_OPTIONS if you don't
 # need it.
 # Otherwise, provides options to be passed to the ssh-add command for
