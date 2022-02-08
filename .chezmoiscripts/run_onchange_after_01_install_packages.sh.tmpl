@@ -2,7 +2,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 echo 'Installing packages from repo / AUR...'
 # Packages hash: {{ include (joinPath .chezmoi.homeDir ".config/packages/packages") | sha256sum }}
-(yay -Sy --needed --batchinstall --noprovides --noconfirm - < {{ (joinPath .chezmoi.homeDir ".config/packages/packages") }}) || true
+yay -Syu --needed --batchinstall --noprovides --noconfirm - < {{ (joinPath .chezmoi.homeDir ".config/packages/packages") }}
 {{- else if eq .chezmoi.os "darwin" -}}
 echo 'Installing homebrew packages...'
 # Brewfile hash: {{ include (joinPath .chezmoi.homeDir ".config/packages/Brewfile") | sha256sum }}
