@@ -8,7 +8,7 @@
 
 {{- if (not (stat (joinPath .chezmoi.homeDir ".config/fish/functions/fisher.fish"))) -}}
 # Install fish
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "linux" -}}
 yay --needed community/fish
 {{- else if eq .chezmoi.os "darwin" -}}
 brew install fish
