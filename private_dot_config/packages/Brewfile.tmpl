@@ -91,14 +91,4 @@ cask "superslicer"
 cask "whatsapp"
 {{- end }}
 
-{{ if $.kubernetes -}}
-# Kubernetes tools
-tap "hidetatz/tap" # Required for kubecolor
-cask "docker"
-brew 'helm'
-brew 'hidetatz/tap/kubecolor'
-brew 'kubernetes-cli'
-brew 'stern'
-{{- end }}
-
 {{- end }}

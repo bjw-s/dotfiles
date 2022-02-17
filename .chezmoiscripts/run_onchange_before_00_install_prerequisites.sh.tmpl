@@ -1,7 +1,8 @@
-#!{{ lookPath "bash"}}
-{{ if not (lookPath "brew") -}}
+#!{{ lookPath "bash" }}
+
 {{- if eq .chezmoi.os "darwin" -}}
 # Install HomeBrew
+{{ if not (lookPath "brew") -}}
 {{ lookPath "bash"}} -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{- end }}
 {{- end }}
@@ -13,4 +14,11 @@ yay --needed community/fish
 {{- else if eq .chezmoi.os "darwin" -}}
 brew install fish
 {{- end }}
+{{- end }}
+
+{{- if not (lookPath "aqua") -}}
+# Install Aqua
+curl -sSfL \
+  https://raw.githubusercontent.com/aquaproj/aqua-installer/v0.7.0/aqua-installer |
+  {{ lookPath "bash" }} -s -- -i {{- (joinPath .chezmoi.homeDir ".local/share/aqua/bin/aqua") }}
 {{- end }}
