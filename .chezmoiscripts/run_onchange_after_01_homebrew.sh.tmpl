@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!{{ lookPath "bash" }}
+echo 'Installing homebrew packages...'
+# Brewfile hash: {{ include (joinPath .chezmoi.homeDir ".config/packages/Brewfile") | sha256sum }}
+brew bundle --no-lock --file "{{ (joinPath .chezmoi.homeDir ".config/packages/Brewfile") }}"
+{{- end }}
