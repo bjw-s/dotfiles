@@ -10,6 +10,7 @@ configs:
   # Default: values listed below.
   include:
     - {{ .chezmoi.homeDir }}/.kube/config
+    - {{ .chezmoi.homeDir }}/.k3d/kubeconfig-*.yaml
     - ./kubeconfig
   # Exclude these globs.
   # Default: values listed below.
