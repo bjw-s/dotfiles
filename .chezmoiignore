@@ -1,8 +1,11 @@
 .github
 
-{{- if ne .chezmoi.os "darwin" }}
-Library
+{{- if eq .chezmoi.os "darwin" }}
+.config/alacritty
+.config/Code
 .config/rofi
+{{- else if eq .chezmoi.os "linux" }}
+Library
 {{- end }}
 
 {{- if not $.agekey }}
