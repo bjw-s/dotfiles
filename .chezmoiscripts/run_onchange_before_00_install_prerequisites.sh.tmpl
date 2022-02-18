@@ -1,13 +1,13 @@
 #!{{ lookPath "bash" }}
 
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
 # Install HomeBrew
 {{ if not (lookPath "brew") -}}
 {{ lookPath "bash"}} -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 {{- end }}
 {{- end }}
 
-{{- if (not (stat (joinPath .chezmoi.homeDir ".config/fish/functions/fisher.fish"))) -}}
+{{- if (not (stat (joinPath .chezmoi.homeDir ".config/fish/config.fish"))) }}
 # Install fish
 {{- if eq .chezmoi.os "linux" -}}
 yay --needed community/fish
@@ -16,16 +16,18 @@ brew install fish
 {{- end }}
 {{- end }}
 
-{{- if not (lookPath "aqua") -}}
+{{- if not (lookPath "aqua") }}
 # Install Aqua
 curl -sSfL \
   https://raw.githubusercontent.com/aquaproj/aqua-installer/v0.7.0/aqua-installer |
   {{ lookPath "bash" }} -s -- -i {{- (joinPath .chezmoi.homeDir ".local/share/aqua/bin/aqua") }}
 {{- end }}
 
-{{- if not (lookPath "asdf") -}}
+{{- if not (lookPath "asdf") }}
 # Install asdf-vm
-{{- if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "linux" -}}
+yay -S --needed --noconfirm asdf-vm
+{{ else if eq .chezmoi.os "darwin" -}}
 brew install asdf
 {{- end -}}
 {{- end }}

@@ -1,6 +1,6 @@
-set -gx AQUA_CONFIG $HOME/.config/aqua/aqua.yaml
-set -gx AQUA_GLOBAL_CONFIG $HOME/.config/aqua/aqua.yaml
-set -gx AQUA_ROOT_DIR $HOME/.local/share/aqua
+set -gx AQUA_CONFIG {{ .chezmoi.homeDir }}/.config/aqua/aqua.yaml
+set -gx AQUA_GLOBAL_CONFIG {{ .chezmoi.homeDir }}/.config/aqua/aqua.yaml
+set -gx AQUA_ROOT_DIR {{ .chezmoi.homeDir }}/.local/share/aqua
 
 # Add aqua to PATH
 set -l aqua_bin_dirs $AQUA_ROOT_DIR/bin
