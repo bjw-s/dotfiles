@@ -1,0 +1,18 @@
+set -gx AQUA_CONFIG $HOME/.config/aqua/aqua.yaml
+set -gx AQUA_GLOBAL_CONFIG $HOME/.config/aqua/aqua.yaml
+set -gx AQUA_ROOT_DIR $HOME/.local/share/aqua
+
+# Add aqua to PATH
+set -l aqua_bin_dirs $AQUA_ROOT_DIR/bin
+
+for x in $aqua_bin_dirs
+  if test -d $x
+    for i in (seq 1 (count $PATH))
+      if test $PATH[$i] = $x
+        set -e PATH[$i]
+        break
+      end
+    end
+  end
+  set PATH $x $PATH
+end

@@ -22,3 +22,10 @@ curl -sSfL \
   https://raw.githubusercontent.com/aquaproj/aqua-installer/v0.7.0/aqua-installer |
   {{ lookPath "bash" }} -s -- -i {{- (joinPath .chezmoi.homeDir ".local/share/aqua/bin/aqua") }}
 {{- end }}
+
+{{- if not (lookPath "asdf") -}}
+# Install asdf-vm
+{{- if eq .chezmoi.os "darwin" -}}
+brew install asdf
+{{- end -}}
+{{- end }}
