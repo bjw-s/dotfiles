@@ -39,8 +39,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #### Windows
-bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym $mod+Shift+b splith
+bindsym $mod+Shift+v splitv
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -75,3 +75,6 @@ bindsym $alt+Shift+e exec $BIN_DIR/wofi_emoji.sh insert
 
 #### Launch Power dialog
 bindsym $mod+Shift+Delete exec $BIN_DIR/wofi_power.sh
+
+#### Launch clipboard manager dialog
+bindsym $mod+v exec $BIN_DIR/wofi_emoji.sh insert

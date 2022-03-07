@@ -12,6 +12,7 @@
 .config/systemd
 .config/waybar
 .config/wofi
+.local/bin/myclipman.sh
 .local/bin/wofi*.sh
 .local/share/applications
 {{- else if eq .chezmoi.os "linux" }}

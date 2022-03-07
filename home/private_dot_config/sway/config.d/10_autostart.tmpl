@@ -1,8 +1,5 @@
-#### Keyring
-exec eval $(gnome-keyring-daemon --start)
-exec export SSH_AUTH_SOCK
-
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
+exec wl-paste -t text --watch myclipman.sh
 
 #### Window focus
 exec swaymsg focus output $ws1
