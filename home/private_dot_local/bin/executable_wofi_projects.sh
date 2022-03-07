@@ -6,7 +6,7 @@ SRC_FOLDER="$HOME/Development/src"
 declare -a PROJECTS=()
 ROOT_FOLDER="$(cd "$SRC_FOLDER" && pwd -P)"
 
-all_my_projects(){
+all_projects(){
   # Gather Git projects
   max_depth=7
   git_projects=()
@@ -30,8 +30,9 @@ all_my_projects(){
   printf "%s\n" "${PROJECTS[@]}"
 }
 
-if [ -z "$1" ]; then
-  all_my_projects
-else
-  {{ lookPath "fish" }} -i -c "code "$ROOT_FOLDER/$1" > /dev/null 2>&1 &"
-fi
+all_projects | wofi --show dmenu --prompt="Select a project" | {
+  read -r project name
+  /usr/bin/fish -i -c "code "$ROOT_FOLDER/$project" > /dev/null 2>&1 &"
+}
+sleep 1
+swaymsg [class="Code"] focus

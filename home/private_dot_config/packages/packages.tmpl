@@ -1,7 +1,14 @@
 {{- if (eq .chezmoi.os "linux") -}}
 community/alacritty
 community/fish
+community/kanshi
+community/mako
+community/sway
+community/swayidle
 community/tmux
+community/waybar
+community/wl-clipboard
+community/wofi
 extra/evolution
 extra/git
 extra/libreoffice-fresh
@@ -9,20 +16,21 @@ extra/tree
 extra/vim
 aur/1password
 aur/1password-cli
-aur/google-chrome
-aur/nerd-fonts-jetbrains-mono
+aur/clipman
 aur/espanso-git
-aur/ulauncher
+aur/google-chrome
+aur/grimshot
+aur/nerd-fonts-dejavu-complete
+aur/noto-fonts-emoji-apple
 aur/visual-studio-code-bin
+aur/wl-clipboard-x11
 
 {{- if $.work }}
 community/opensc
 community/yubikey-manager
 extra/openvpn
-aur/microsoft-edge-stable-bin
 aur/openvpn-update-systemd-resolved
 aur/ringcentral-bin
-aur/teams
 aur/zoom
 {{- end }}
 

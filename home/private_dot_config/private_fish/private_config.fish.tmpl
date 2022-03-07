@@ -10,6 +10,7 @@ set -gx GPG_TTY (tty)
 
 # Set up paths
 fish_add_path "/usr/local/sbin"
+fish_add_path "{{ .chezmoi.homeDir }}/.local/bin"
 
 {{ if (eq .chezmoi.os "darwin") -}}
 fish_add_path "/usr/local/opt/grep/libexec/gnubin"
@@ -21,3 +22,10 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 {{- end }}
 
 set -U fish_greeting
+
+{{ if eq .chezmoi.os "linux" -}}
+# Run sway on TTY1
+if [ (tty) = "/dev/tty1" ]
+    exec sway
+end
+{{- end }}

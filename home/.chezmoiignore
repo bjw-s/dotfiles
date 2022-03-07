@@ -1,9 +1,19 @@
 .github
 
 {{- if eq .chezmoi.os "darwin" }}
+.config/chrome-flags.conf
+
 .config/alacritty
 .config/Code
+.config/kanshi
+.config/mako
 .config/rofi
+.config/sway
+.config/systemd
+.config/waybar
+.config/wofi
+.local/bin/wofi*.sh
+.local/share/applications
 {{- else if eq .chezmoi.os "linux" }}
 Library
 {{- end }}

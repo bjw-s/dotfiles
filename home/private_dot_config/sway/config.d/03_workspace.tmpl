@@ -1,0 +1,29 @@
+### Workspaces
+
+#### Workspace names
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+
+#### Assign programs to workspaces
+
+##### Browsers
+assign [class="^Chromium"] $ws3
+assign [class="^Chrome$"] $ws3
+assign [app_id="google-chrome"] $ws3
+assign [class="Microsoft-edge"] $ws3
+
+##### Editors
+assign [class="Code"] $ws5
+
+##### Communication
+assign [app_id="evolution"] $ws1
+assign [class="Microsoft Teams*"] $ws1
+assign [app_id="chrome-teams.microsoft.com_*"] $ws1
+assign [class="discord"] $ws4
+
+#### Workspace macros
+set $next_or_new swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (max_by(.num) | .num) as $maxOutput | (.[] | select(.focused == true) | .num) as $current | if $maxOutput > $current then "next_on_output" else $max + 1 end'
+set $previous_or_first swaymsg -r -t get_workspaces | jq -r --arg OUTPUT $(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused == true) | .name') '(. | (max_by(.num) | .num)) as $max | [.[] | select(.output == $OUTPUT)] | (min_by(.num) | .num) as $minOutput | (.[] | select(.focused == true) | .num) as $current | if $minOutput < $current then "prev_on_output" else $current end'
