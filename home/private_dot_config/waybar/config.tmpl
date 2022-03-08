@@ -30,11 +30,12 @@
         "mpd",
         "custom/separator",
         "idle_inhibitor",
-        "network",
         "custom/vpn",
-        "pulseaudio",
-        "battery",
+        "custom/scratchpad_indicator",
         "tray",
+        "pulseaudio",
+        "network",
+        "battery",
         "clock#time",
         "clock#date"
     ],
@@ -90,9 +91,13 @@
 
     "network": {
         "interval": 5,
-        "format-wifi": " ", // Icon: wifi
-        "format-ethernet": " ", // Icon: ethernet
-        "format-disconnected": "⚠  Disconnected",
+        "format": "{icon}",
+        "format-disconnected": "{icon} Disconnected",
+        "format-icons": {
+            "wifi": "",
+            "ethernet": "",
+            "disconnected": "⚠"
+        },
         "tooltip-format": "{ifname}: {ipaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}",
         "on-click": "nm-connection-editor"
@@ -186,5 +191,13 @@
     "custom/vpn": {
         "exec": "~/.config/waybar/modules/waybar-vpn_status",
         "return-type": "json"
+    },
+
+    "custom/scratchpad_indicator": {
+        "interval": 3,
+        "exec": "~/.config/waybar/modules/waybar-scratchpad_count",
+        "format": "{} ",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
     }
 }
