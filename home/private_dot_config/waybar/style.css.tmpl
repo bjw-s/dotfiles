@@ -63,6 +63,7 @@ window#waybar.bottom {
 }
 #workspaces button.focused {
 	color: @hilight;
+	border-bottom: 3px solid @hilight;
 }
 
 #mode {
@@ -109,9 +110,25 @@ window#waybar.bottom {
 }
 
 #custom-vpn.on {
-  border-bottom: 3px solid #b8bb26;
+  border-bottom: 3px solid @hilight;
 }
 
 #custom-vpn.off {
-  border-bottom: 3px solid #f53c3c;
+  border-bottom: 3px solid @crit;
+}
+
+#idle_inhibitor.activated {
+  border-bottom: 3px solid @accent;
+}
+
+#mpd.playing {
+	border-bottom: 3px solid @accent;
+}
+
+#mpd.paused {
+	border-bottom: 3px solid @warn;
+}
+
+#mpd.stopped {
+	border-bottom: 3px solid @crit;
 }
