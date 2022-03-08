@@ -1,0 +1,10 @@
+[Unit]
+Description=Show message when yubikey touch required
+Requires=yubikey-touch-detector.service
+
+[Service]
+Restart=on-failure
+ExecStart={{- joinPath .chezmoi.homeDir ".local/bin/swaynag-yubikey.sh" }}
+
+[Install]
+WantedBy=sway-session.target

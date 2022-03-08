@@ -21,19 +21,18 @@
 
     "modules-left": [
         "sway/workspaces",
-        "sway/mode"
+        "sway/mode",
     ],
     "modules-center": [
     ],
     "modules-right": [
         "sway/window",
-        "network",
         "mpd",
-        /* "memory", */
-        /* "cpu", */
         "idle_inhibitor",
+        "network",
+        "custom/vpn",
         "pulseaudio",
-        /* "battery", */
+        "battery",
         "tray",
         "clock#time",
         "clock#date"
@@ -80,29 +79,11 @@
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
     },
 
-    "cpu": {
-        "interval": 5,
-        "format": "  {usage}% ({load})", // Icon: microchip
-        "states": {
-          "warning": 70,
-          "critical": 90
-        }
-    },
-
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
-        }
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": "  {}%", // Icon: memory
-        "states": {
-            "warning": 70,
-            "critical": 90
         }
     },
 
@@ -194,7 +175,11 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)",
         "on-click": "mpc -q toggle",
-        "on-scroll-up": "mpc volume +2",
-        "on-scroll-down": "mpc volume -2"
+        "on-click-right": "swaymsg exec \"\\$term_float --command ncmpcpp\""
+    },
+
+    "custom/vpn": {
+        "exec": "~/.config/waybar/modules/waybar-vpn_status",
+        "return-type": "json"
     }
 }
