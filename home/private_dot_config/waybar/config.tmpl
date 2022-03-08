@@ -24,10 +24,11 @@
         "sway/mode",
     ],
     "modules-center": [
+        "sway/window"
     ],
     "modules-right": [
-        "sway/window",
         "mpd",
+        "custom/separator",
         "idle_inhibitor",
         "network",
         "custom/vpn",
@@ -97,6 +98,10 @@
         "on-click": "nm-connection-editor"
     },
 
+    "tray": {
+        "spacing": 10
+    },
+
     "sway/mode": {
         "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
@@ -120,7 +125,7 @@
         },
         "format-icons": {
             "1": "",
-            "2": "w",
+            "2": "",
             "3": "",
             "4": "",
             "5": "",
@@ -151,9 +156,9 @@
     },
 
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ﱙ",
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": " Disconnected",
+        "format-stopped": "ﱙ {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
         "interval": 2,
         "consume-icons": {
             "on": " " // Icon shows only when "consume" is on

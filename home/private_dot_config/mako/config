@@ -1,12 +1,17 @@
-font=FiraCode Nerd Font
-background-color=#3b4252
-progress-color=#4c566a
-icons=1
-padding=10
-width=300
-border-color=#2e3440
-border-size=1
-border-radius=3
-actions=1
-default-timeout=3333
+font=FiraCode Nerd Font 11
 layer=overlay
+
+default-timeout=5000
+
+background-color=#2E3440
+border-size=2
+border-radius=8
+border-color=#E5E9F0
+text-color=#E5E9F0
+
+[urgency=critical]
+background-color=#BF616A
+default-timeout=0
+
+[app-name="Music Player Daemon"]
+invisible=1

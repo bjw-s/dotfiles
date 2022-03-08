@@ -32,7 +32,7 @@ all_projects(){
 
 all_projects | wofi --show dmenu --prompt="Select a project" | {
   read -r project name
-  /usr/bin/fish -i -c "code "$ROOT_FOLDER/$project" > /dev/null 2>&1 &"
+  code "$ROOT_FOLDER/$project" > /dev/null 2>&1
 }
 sleep 1
 swaymsg [class="Code"] focus

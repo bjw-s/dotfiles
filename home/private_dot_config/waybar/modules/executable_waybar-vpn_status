@@ -5,10 +5,10 @@ ENDPOINT_FILE="$HOME/vpn/test_endpoint"
 vpn() {
   if [ -f "${ENDPOINT_FILE}" ]; then
     if ping $(cat "${ENDPOINT_FILE}") -c 1 > /dev/null 2>&1; then
-      icon="<span foreground='#928374'>🔒</span>"
+      icon=""
       class=on
     else
-      icon="<span foreground='#928374'>🔓</span>"
+      icon=""
       class=off
     fi
     printf '{"text": " %s ", "class": "%s"}\n' "$icon" "$class"
