@@ -83,11 +83,10 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
-
 # Scratchpad neovim
 for_window [title="nvim-float"] floating enable, move to scratchpad, move to output current
 # Scratchpad terminal
-for_window [title="(?i)$criteria"] floating enable, move absolute position 1500px 100px, resize set 1200px 700px, move to scratchpad, mark $criteria
+for_window [title="$term-float"] floating enable, move position /center, resize set 1000px 600px, move to scratchpad, mark $term-float
 
 # Waybar Tooltips don't steel focus
 no_focus [app_id="waybar"]

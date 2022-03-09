@@ -2,6 +2,7 @@
 
 #### Start a terminal
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec swaymsg "[title=$term-float] scratchpad show" || $term -t $term-float
 
 #### Kill focused Window
 bindsym $mod+Shift+q kill
