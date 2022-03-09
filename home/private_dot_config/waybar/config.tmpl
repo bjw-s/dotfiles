@@ -36,8 +36,9 @@
         "pulseaudio",
         "network",
         "battery",
+        "clock#date",
         "clock#time",
-        "clock#date"
+        "custom/notification"
     ],
 
     // -------------------------------------------------------------------------
@@ -76,8 +77,7 @@
 
     "clock#date": {
       "interval": 10,
-      //"format": "  {:%e %b %Y}", // Icon: calendar-alt
-      "format": "  {:%a %b %F}", // Icon: calendar-alt
+      "format": "  {:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
     },
 
@@ -199,5 +199,22 @@
         "format": "{} ",
         "on-click": "swaymsg 'scratchpad show'",
         "on-click-right": "swaymsg 'move scratchpad'"
-    }
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {icon} ",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
 }

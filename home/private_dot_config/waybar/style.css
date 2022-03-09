@@ -81,7 +81,7 @@ window#waybar.bottom {
 }
 
 #battery.critical,
-#custom-vpn.off
+#custom-vpn.off,
 #network.disconnected {
 	background: @background;
 	color: @crit;
@@ -127,6 +127,8 @@ window#waybar.bottom {
 	border-bottom: 3px solid @accent;
 }
 
+#custom-notification.dnd-notification,
+#custom-notification.notification,
 #mpd.paused {
 	border-bottom: 3px solid @warn;
 }
