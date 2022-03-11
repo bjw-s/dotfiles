@@ -36,7 +36,6 @@
         "pulseaudio",
         "network",
         "battery",
-        "clock#date",
         "clock#time",
         "custom/notification"
     ],
@@ -72,7 +71,8 @@
             "Europe/Amsterdam",
             "America/New_York"
         ],
-        "on-click": "date -Iseconds | wl-copy && notify-send 'Date Copied'"
+        "on-click": "date -Iseconds | wl-copy && notify-send 'Date Copied'",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
     },
 
     "clock#date": {
