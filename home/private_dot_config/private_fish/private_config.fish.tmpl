@@ -24,6 +24,9 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 set -U fish_greeting
 
 {{ if eq .chezmoi.os "linux" -}}
+# Environment.d
+export (/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+
 # Run sway on TTY1
 if [ (tty) = "/dev/tty1" ]
     exec sway

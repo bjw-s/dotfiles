@@ -9,11 +9,11 @@
 .config/mako
 .config/rofi
 .config/sway
+.config/swaync
 .config/systemd
 .config/waybar
 .config/wofi
-.local/bin/myclipman.sh
-.local/bin/wofi*.sh
+.local/bin/*.sh
 .local/share/applications
 {{- else if eq .chezmoi.os "linux" }}
 Library

@@ -1,6 +1,8 @@
 exec_always "systemctl --user import-environment; systemctl --user start sway-session.target"
 exec wl-paste -t text --watch myclipman.sh
 
+exec reset_chrome_exitstate.sh
+
 #### Always-available scratchpad terminal
 exec $term_float
 
