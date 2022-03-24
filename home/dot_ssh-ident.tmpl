@@ -1,4 +1,8 @@
+{{- if $.work -}}
 DEFAULT_IDENTITY = "work"
+{{- else -}}
+DEFAULT_IDENTITY = "personal"
+{{- end }}
 
 MATCH_PATH = [
   # [directory pattern, identity]
