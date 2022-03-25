@@ -26,7 +26,7 @@ packages:
 
 {{- if $.kubernetes }}
   - name: harness/drone-cli@v1.5.0
-  - name: fluxcd/flux2@v0.27.0
+  - name: fluxcd/flux2@v0.28.2
   - name: helm/helm@v3.8.0
   - name: rancher/k3d@v5.3.0
   - name: sbstp/kubie@v0.16.0
@@ -34,7 +34,7 @@ packages:
   # TODO: Replace asdf kubectl with this once vscode extension
   # no longer crashes
   - name: kubernetes/kubectl
-    version: 'v1.23.4'
+    version: 'v1.23.5'
   - name: stern/stern@v1.21.0
   - name: kubernetes-sigs/cluster-api@v1.1.1
   - name: talos-systems/talos@v0.14.2
