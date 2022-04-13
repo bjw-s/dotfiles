@@ -1,0 +1,56 @@
+{
+  // General RenovateBot configuration
+  "extends": [
+    ":enableRenovate",
+    "config:base",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases",
+    "docker:enableMajor",
+    ":enablePreCommit",
+  ],
+  "platform": "github",
+  "username": "bjw-s-bot[bot]",
+  "repositories": ["bjw-s/dotfiles"],
+  "onboarding": false,
+  "requireConfig": false,
+  "gitAuthor": "bjw-s-bot <87358111+bjw-s[bot]@users.noreply.github.com>",
+  "timezone": "Europe/Amsterdam",
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "commitMessageSuffix": "",
+  "semanticCommitScope": "",
+  "regexManagers": [
+    {
+      "fileMatch": ["\\.?aqua\\.ya?ml(\\.tmpl)?"],
+      "matchStrings": [
+        " +['\"]?(version|ref)['\"]? *: +['\"]?(?<currentValue>[^'\" \\n]+?)['\"]? +# renovate: depName=(?<depName>[^\\n]+)",
+        " +['\"]?name['\"]? *: +['\"]?(?<depName>[^'\" @/\\n]+/[^'\" @/\\n]+)(/[^'\" /@\\n]+)*@(?<currentValue>[^'\" \\n]+)['\"]?"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depTypeTemplate": "aqua"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "semanticCommitType": "feat!"
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat"
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix"
+    },
+    {
+      "matchDepTypes": ["aqua"],
+      "commitMessageTopic": "Aqua package {{depName}}"
+    }
+  ]
+}
