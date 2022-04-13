@@ -6,7 +6,6 @@
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
-    ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
   ],
@@ -51,6 +50,13 @@
     {
       "matchDepTypes": ["aqua"],
       "commitMessageTopic": "Aqua package {{depName}}"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchUpdateTypes": ["minor", "patch"],
     }
   ]
 }
