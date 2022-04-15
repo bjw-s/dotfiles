@@ -1,0 +1,3 @@
+{{- if $.kubernetes }}
+fish_add_path "{{ .chezmoi.homeDir }}/.krew/bin"
+{{- end }}
