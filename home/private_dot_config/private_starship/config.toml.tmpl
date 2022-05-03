@@ -1,23 +1,42 @@
+format = """
+[╭─](white) $nix_shell$kubernetes$git_branch$python$terraform$golang
+[╰─](white) $directory$character\n"""
+
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[✖](bold red)"
 
 [directory]
-truncation_length = 5
-truncate_to_repo = true
-
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+format = "[ $path]($style)[$read_only]($read_only_style) "
+read_only = " "
+truncation_length = 3
+truncation_symbol = "…/"
+style = "blue"
 
 [git_branch]
 symbol = " "
+format = "[$symbol$branch]($style) "
 
-{{ if $.kubernetes -}}
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style) "
+
+[hostname]
+style = "bold green"
+
 [kubernetes]
 symbol = "ﴱ "
-format = 'on [ﴱ $context \($namespace\)](bold bright-green) '
+format = "[$symbol$context \\($namespace\\)]($style) "
+style  = "bold bright-green"
 disabled = false
-[kubernetes.context_aliases]
-"default" = "cluster-0"
-{{- end }}
+
+[python]
+symbol = " "
+format = "[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )]($style) "
+
+[terraform]
+symbol = "ﳼ "
+format = "[$symbol$workspace]($style) "
+
+[username]
+style_user = "bold blue"

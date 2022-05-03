@@ -3,3 +3,17 @@
 alias pbcopy 'xclip -selection clipboard'
 alias pbpaste 'xclip -selection clipboard -o'
 {{- end }}
+
+{{- if $.kubernetes }}
+alias k "{{ .chezmoi.homeDir }}/.asdf/shims/kubectl"
+alias kc "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/kubecolor"
+{{- end }}
+
+alias cat "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/bat"
+alias vim "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/nvim"
+
+alias ls "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd"
+alias ll "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -l"
+alias la "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -a"
+alias lt "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd --tree"
+alias lla "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -la"

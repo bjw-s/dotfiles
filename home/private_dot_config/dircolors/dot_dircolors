@@ -1,6 +1,3 @@
-# Term Section
-TERM xterm-256color
-
 NORMAL 00;38;2;171;178;191 # no color code at all
 FILE 00 # regular file: use no color at all
 RESET 00;38;2;171;178;191 # reset to "normal" color
