@@ -1,5 +1,5 @@
 format = """
-[╭─](white) $nix_shell$kubernetes$git_branch$python$terraform$golang
+[╭─](white) $nix_shell$kubernetes$fill$git_branch$python$terraform$golang
 [╰─](white) $directory$character\n"""
 
 [character]
@@ -15,11 +15,11 @@ style = "blue"
 
 [git_branch]
 symbol = " "
-format = "[$symbol$branch]($style) "
+format = "[\\[ $symbol$branch \\]]($style) "
 
 [golang]
 symbol = " "
-format = "[$symbol($version )]($style) "
+format = "[\\[ $symbol($version ) \\]]($style) "
 
 [hostname]
 style = "bold green"
@@ -32,11 +32,11 @@ disabled = false
 
 [python]
 symbol = " "
-format = "[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )]($style) "
+format = "[\\[ $symbol$pyenv_prefix($version )(\\($virtualenv\\) )\\]]($style) "
 
 [terraform]
 symbol = "ﳼ "
-format = "[$symbol$workspace]($style) "
+format = "[\\[ $symbol$workspace \\]]($style) "
 
 [username]
 style_user = "bold blue"

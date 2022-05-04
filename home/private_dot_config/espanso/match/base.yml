@@ -10,3 +10,8 @@ matches:
         type: date
         params:
           format: "%m/%d/%Y"
+
+  - trigger: "mvg,"
+    replace: |
+      Met vriendelijke groet,
+      Bernd Schörgers

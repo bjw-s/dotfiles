@@ -11,14 +11,8 @@
   excludesfile={{ .chezmoi.homeDir }}/.config/git/gitignore_global
   autocrlf=input
 
-[merge]
-  ff = only
-
 [pull]
-  rebase = true
-
-[status]
-  submoduleSummary = false
+  rebase = false
 
 [tag]
   forceSignAnnotated = true
