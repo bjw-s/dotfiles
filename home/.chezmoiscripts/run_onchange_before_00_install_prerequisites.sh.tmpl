@@ -23,8 +23,8 @@ current_aqua_version=v1.6.0-2
 
 if [ ! $(command -v aqua) ] || [ $(aqua -v | head -n1 | cut -d" " -f3 | sed "s/^/v/") != $current_aqua_version ]; then
   echo "installing / upgrading aqua"
-  curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v1.0.0/aqua-installer | {{ lookPath "bash" }} -s -- -v $current_aqua_version -i {{- (joinPath .chezmoi.homeDir ".local/bin/aqua") }}
-  AQUA_GLOBAL_CONFIG={{- (joinPath .chezmoi.homeDir ".config/aqua/aqua.yaml") }} rm -rf {{- (joinPath .chezmoi.homeDir ".local/share/aqua") }} && aqua install -a -l
+  curl -sSfL https://raw.githubusercontent.com/aquaproj/aqua-installer/v1.0.0/aqua-installer | {{ lookPath "bash" }} -s -- -v $current_aqua_version -i {{ (joinPath .chezmoi.homeDir ".local/bin/aqua") }}
+  AQUA_GLOBAL_CONFIG={{ (joinPath .chezmoi.homeDir ".config/aqua/aqua.yaml") }} rm -rf {{ (joinPath .chezmoi.homeDir ".local/share/aqua") }} && aqua install -a -l
 fi
 
 {{- if not (lookPath "asdf") }}
