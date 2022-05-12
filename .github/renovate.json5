@@ -10,8 +10,6 @@
     ":enablePreCommit",
     "github>aquaproj/aqua-renovate-config:installer-script#0.1.8(home/.chezmoiscripts/.*install-prerequisites\\.sh\\.tmpl)",
     "github>aquaproj/aqua-renovate-config:file#0.1.8(home/private_dot_config/aqua/aqua\\.yaml\\.tmpl)",
-    "github>aquaproj/aqua-renovate-config:golang-go#0.1.8(home/private_dot_config/aqua/aqua\\.yaml\\.tmpl)",
-    "github>aquaproj/aqua-renovate-config:kubernetes-kubectl#0.1.8(home/private_dot_config/aqua/aqua\\.yaml\\.tmpl)",
   ],
   platform: "github",
   username: "bjw-s-bot[bot]",
