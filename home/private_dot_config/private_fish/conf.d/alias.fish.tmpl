@@ -5,7 +5,7 @@ alias pbpaste 'xclip -selection clipboard -o'
 {{- end }}
 
 {{- if $.kubernetes }}
-alias k "{{ .chezmoi.homeDir }}/.asdf/shims/kubectl"
+alias k "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/kubectl"
 alias kc "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/kubecolor"
 {{- end }}
 
