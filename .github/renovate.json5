@@ -1,6 +1,6 @@
 {
   // General RenovateBot configuration
-  "extends": [
+  extends: [
     ":enableRenovate",
     "config:base",
     ":disableRateLimiting",
@@ -8,62 +8,63 @@
     ":semanticCommits",
     "docker:enableMajor",
     ":enablePreCommit",
+    "github>aquaproj/aqua-renovate-config:installer-script#0.1.8(home/.chezmoiscripts/.*install-aqua\\.sh\\.tmpl)",
+    "github>aquaproj/aqua-renovate-config:file#0.1.8(home/private_dot_config/aqua\\.yaml\\.tmpl)",
+    "github>aquaproj/aqua-renovate-config:golang-go#0.1.8(home/private_dot_config/dot_config/aqua\\.yaml\\.tmpl)",
+    "github>aquaproj/aqua-renovate-config:kubernetes-kubectl#0.1.8(home/private_dot_config/dot_config/aqua\\.yaml\\.tmpl)",
   ],
-  "platform": "github",
-  "username": "bjw-s-bot[bot]",
-  "repositories": ["bjw-s/dotfiles"],
-  "onboarding": false,
-  "requireConfig": false,
-  "gitAuthor": "bjw-s-bot <87358111+bjw-s[bot]@users.noreply.github.com>",
-  "timezone": "Europe/Amsterdam",
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  "suppressNotifications": ["prIgnoreNotification"],
-  "rebaseWhen": "conflicted",
-  "commitMessageTopic": "{{depName}}",
-  "commitMessageExtra": "to {{newVersion}}",
-  "commitMessageSuffix": "",
-  "semanticCommitScope": "",
-  "regexManagers": [
+  platform: "github",
+  username: "bjw-s-bot[bot]",
+  repositories: ["bjw-s/dotfiles"],
+  onboarding: false,
+  requireConfig: false,
+  gitAuthor: "bjw-s-bot <87358111+bjw-s[bot]@users.noreply.github.com>",
+  timezone: "Europe/Amsterdam",
+  dependencyDashboardTitle: "Renovate Dashboard",
+  suppressNotifications: ["prIgnoreNotification"],
+  rebaseWhen: "conflicted",
+  commitMessageTopic: "{{depName}}",
+  commitMessageExtra: "to {{newVersion}}",
+  commitMessageSuffix: "",
+  semanticCommitScope: "",
+  regexManagers: [
     {
-      "fileMatch": ["\\.?aqua\\.ya?ml(\\.tmpl)?"],
-      "matchStrings": [
-        " +['\"]?(version|ref)['\"]? *: +['\"]?(?<currentValue>[^'\" \\n]+?)['\"]? +# renovate: depName=(?<depName>[^\\n]+)",
-        " +['\"]?name['\"]? *: +['\"]?(?<depName>[^'\" @/\\n]+/[^'\" @/\\n]+)(/[^'\" /@\\n]+)*@(?<currentValue>[^'\" \\n]+)['\"]?"
+      fileMatch: ["home\\/\\.chezmoiscripts\\/.+\\.sh\\.tmpl$"],
+      matchStrings: [
+        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n\\s*current_\\w+_version=(?<currentValue>.+)\\b",
       ],
-      "datasourceTemplate": "github-releases",
-      "depTypeTemplate": "aqua"
-    }
+    },
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "matchUpdateTypes": ["major"],
-      "semanticCommitType": "feat!"
+      matchUpdateTypes: ["major"],
+      semanticCommitType: "feat!",
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat"
+      matchUpdateTypes: ["minor"],
+      semanticCommitType: "feat",
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix"
+      matchUpdateTypes: ["patch"],
+      semanticCommitType: "fix",
     },
     {
-      "matchDepTypes": ["aqua"],
-      "commitMessageTopic": "Aqua package {{depName}}"
+      matchDepTypes: ["aqua"],
+      commitMessageTopic: "Aqua package {{depName}}",
     },
     {
-      "matchManagers": ["github-actions"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
+      matchManagers: ["github-actions"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"],
     },
     {
-      "matchDepTypes": ["aqua"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
-    }
-  ]
+      matchDepTypes: ["aqua"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"],
+    },
+  ],
 }
