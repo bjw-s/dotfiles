@@ -5,15 +5,17 @@ alias pbpaste 'xclip -selection clipboard -o'
 {{- end }}
 
 {{- if $.kubernetes }}
-alias k "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/kubectl"
-alias kc "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/kubecolor"
+alias k "$AQUA_ROOT_DIR/bin/kubectl"
+alias kc "$AQUA_ROOT_DIR/bin/kubecolor"
 {{- end }}
 
-alias cat "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/bat"
-alias vim "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/nvim"
+alias cat "$AQUA_ROOT_DIR/bin/bat"
+alias vim "$AQUA_ROOT_DIR/bin/nvim"
 
-alias ls "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd"
-alias ll "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -l"
-alias la "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -a"
-alias lt "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd --tree"
-alias lla "{{ .chezmoi.homeDir }}/.local/share/aqua/bin/lsd -la"
+alias ls "$AQUA_ROOT_DIR/bin/lsd"
+alias ll "$AQUA_ROOT_DIR/bin/lsd -l"
+alias la "$AQUA_ROOT_DIR/bin/lsd -a"
+alias lt "$AQUA_ROOT_DIR/bin/lsd --tree"
+alias lla "$AQUA_ROOT_DIR/bin/lsd -la"
+
+alias wget "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""

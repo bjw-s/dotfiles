@@ -24,7 +24,6 @@ set -gx CPPFLAGS "-I/opt/homebrew/include $CPPFLAGS"
 {{- end }}
 
 set -U fish_greeting
-set -gx EDITOR vim
 
 {{ if eq .chezmoi.os "linux" -}}
 # Environment.d

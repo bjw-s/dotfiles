@@ -1,0 +1,16 @@
+set UID (id -u (whoami))
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_RUNTIME_DIR "/run/user/$UID"
+set -gx XDG_STATE_HOME "$HOME/.local/state"
+
+set -gx AQUA_ROOT_DIR "$XDG_DATA_HOME/aqua"
+
+set -gx EDITOR vim
+set -gx LESSHISTFILE "$XDG_CACHE_HOME/less/history"
+
+set -gx TERMINFO "$XDG_DATA_HOME/terminfo"
+set -gx TERMINFO_DIRS "$TERMINFO:/usr/share/terminfo"
+
+set -gx GOPATH "$XDG_DATA_HOME/go"

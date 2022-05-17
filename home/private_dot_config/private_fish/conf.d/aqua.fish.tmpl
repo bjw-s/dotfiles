@@ -1,6 +1,5 @@
-set -gx AQUA_CONFIG {{ .chezmoi.homeDir }}/.config/aqua/aqua.yaml
-set -gx AQUA_GLOBAL_CONFIG {{ .chezmoi.homeDir }}/.config/aqua/aqua.yaml
-set -gx AQUA_ROOT_DIR {{ .chezmoi.homeDir }}/.local/share/aqua
+set -gx AQUA_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
+set -gx AQUA_GLOBAL_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
 
 fish_add_path $AQUA_ROOT_DIR/bin
 
