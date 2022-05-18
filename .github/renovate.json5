@@ -47,10 +47,6 @@
       semanticCommitType: "fix",
     },
     {
-      matchDepTypes: ["aqua"],
-      commitMessageTopic: "Aqua package {{depName}}",
-    },
-    {
       matchManagers: ["github-actions"],
       automerge: true,
       automergeType: "branch",
@@ -58,11 +54,13 @@
       matchUpdateTypes: ["minor", "patch"],
     },
     {
-      matchDepTypes: ["aqua"],
       automerge: true,
       automergeType: "branch",
       requiredStatusChecks: null,
       matchUpdateTypes: ["minor", "patch"],
+      "matchPackageNames": [
+        "aquaproj/aqua-registry"
+      ]
     },
   ],
 }
