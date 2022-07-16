@@ -15,9 +15,6 @@
 
     "position": "top",
 
-    // If height property would be not present, it'd be calculated dynamically
-    "height": 10,
-
 
     "modules-left": [
         "sway/workspaces",
@@ -36,7 +33,7 @@
         "pulseaudio",
         "network",
         "battery",
-        "clock#time",
+        "clock",
         "custom/notification"
     ],
 
@@ -64,7 +61,7 @@
         "tooltip": true
     },
 
-    "clock#time": {
+    "clock": {
         "interval": 1,
         "format": "{:%H:%M:%S %Z}",
         "timezones": [
