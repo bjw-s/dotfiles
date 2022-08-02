@@ -191,7 +191,9 @@ lvim.plugins = {
       vim.g.indent_blankline_show_first_indent_level = false
     end
   },
-  { "christianchiarulli/nvcode-color-schemes.vim" }
+  { "christianchiarulli/nvcode-color-schemes.vim" },
+  { "ntpeters/vim-better-whitespace" },
+  { "GutenYe/json5.vim" }
   --     {"folke/tokyonight.nvim"},
   --     {
   --       "folke/trouble.nvim",

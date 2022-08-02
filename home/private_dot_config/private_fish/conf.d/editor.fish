@@ -8,3 +8,7 @@ if type -q $HOME/.local/bin/lvim
 else
   alias nvim vim
 end
+
+if [ ! "$TERM_PROGRAM" = "vscode" ];
+  fish_add_path -m -p "$AQUA_ROOT_DIR/bin"
+end
