@@ -1,8 +1,11 @@
 {
   /*+--- Core ---+*/
-  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'FiraCode Nerd Font', 'Font Awesome 6 Free Solid'",
   "editor.fontLigatures": true,
+  "editor.guides.bracketPairs":"active",
+  "editor.tabSize": 2,
   "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -22,14 +25,6 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.renderIndentGuides": "none",
 
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
   /*+--- Color Theme ---+*/
   "editor.tokenColorCustomizations": {
     "[Nord]": {
@@ -37,6 +32,9 @@
     }
   },
   "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.folders.associations": {
+    ".taskfiles": "utils",
+  },
   "material-icon-theme.folders.color": "#616e88",
   "material-icon-theme.folders.theme": "classic",
   "material-icon-theme.hidesExplorerArrows": false,
@@ -52,12 +50,19 @@
   "projectManager.showParentFolderInfoOnDuplicates": true,
   "redhat.telemetry.enabled": false,
   "sops.beta": false,
-  "todo-tree": {
-    "tree.expanded": true,
-    "highlights.useColourScheme": true
-  },
+  "todo-tree.highlights.useColourScheme: true"
+  "todo-tree.tree.expanded: true"
   "vs-kubernetes": {
     "vs-kubernetes.crd-code-completion": "enabled"
   },
   "yaml.format.enable": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/taskfile.json": [
+      "Taskfile.yaml",
+      ".taskfiles/*.yaml"
+    ],
+    "http://json.schemastore.org/github-workflow.json": [
+      ".github/workflows/*.yaml"
+    ]
+  },
 }
