@@ -1,2 +1,0 @@
-#!/bin/env bash
-swaymsg -t get_tree | jq '.nodes[].nodes[] | select(.name=="__i3_scratch").floating_nodes | length' | grep -v '^0$'

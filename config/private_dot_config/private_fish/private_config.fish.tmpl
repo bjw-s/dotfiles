@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "linux" -}}
+# Configure GPG
+set -gx GPG_TTY (tty)
+
+# Environment.d
+export (/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+
+# Run sway on TTY1
+if [ (tty) = "/dev/tty1" ]
+    exec sway
+end
+{{- end }}
+
+set -U fish_greeting

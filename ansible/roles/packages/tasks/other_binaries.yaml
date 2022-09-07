@@ -1,0 +1,84 @@
+---
+- name: "download and extract archives from GitHub releases"
+  vars:
+    url: "https://github.com/{{ item.repository }}/releases/download/{{ item.version }}/{{ item.asset }}"
+    parsed_url: |
+      {{
+        url
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+    parsed_filter: |
+      {{
+        item.filter
+          | default([])
+          | replace("$version", item.version)
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ parsed_url }}"
+    dest: "{{ ansible_user_dir }}/.local/bin"
+    include: "{{ parsed_filter }}"
+    extra_opts: "{{ item.unpack_opts | default([]) }}"
+  with_items: |-
+    {{ packages.other_binaries | selectattr("type", "equalto", "github_release") | selectattr("format", "equalto", "archive") }}
+
+- name: "download and install binaries from GitHub releases"
+  vars:
+    url: "https://github.com/{{ item.repository }}/releases/download/{{ item.version }}/{{ item.asset }}"
+    parsed_url: |
+      {{
+        url
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+  ansible.builtin.get_url:
+    url: "{{ parsed_url }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ item.rename_to | default('') }}"
+    mode: '0770'
+  with_items: |-
+    {{ packages.other_binaries | selectattr("type", "equalto", "github_release") | selectattr("format", "equalto", "raw") }}
+
+- name: "download and extract archives from URLs"
+  vars:
+    parsed_url: |
+      {{
+        item.url
+          | replace("$version", item.version)
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+    parsed_filter: |
+      {{
+        item.filter
+          | default([])
+          | replace("$version", item.version)
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ parsed_url }}"
+    dest: "{{ ansible_user_dir }}/.local/bin"
+    include: "{{ parsed_filter }}"
+    extra_opts: "{{ item.unpack_opts | default([]) }}"
+  with_items: |-
+    {{ packages.other_binaries | selectattr("type", "equalto", "http") | selectattr("format", "equalto", "archive") }}
+
+- name: "download and install binaries from URLs"
+  vars:
+    parsed_url: |
+      {{
+        item.url
+          | replace("$version", item.version)
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+  ansible.builtin.get_url:
+    url: "{{ parsed_url }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ item.rename_to | default('') }}"
+    mode: '0770'
+  with_items: |-
+    {{ packages.other_binaries | selectattr("type", "equalto", "http") | selectattr("format", "equalto", "raw") }}

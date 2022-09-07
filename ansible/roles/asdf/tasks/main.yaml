@@ -1,0 +1,6 @@
+---
+- name: "install asdf"
+  import_tasks: "install.yaml"
+
+- name: "install plugins"
+  import_tasks: "plugins.yaml"

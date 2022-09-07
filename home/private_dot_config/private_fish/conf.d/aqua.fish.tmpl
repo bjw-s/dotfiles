@@ -1,8 +1,0 @@
-set -gx AQUA_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
-set -gx AQUA_GLOBAL_CONFIG "$XDG_CONFIG_HOME/aqua/aqua.yaml"
-
-fish_add_path $AQUA_ROOT_DIR/bin
-
-{{ if ne .chezmoi.os "darwin" -}}
-  set -gx AQUA_EXPERIMENTAL_X_SYS_EXEC true
-{{ end -}}

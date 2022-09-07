@@ -1,6 +1,0 @@
-{{ if eq .chezmoi.os "linux" -}}
-#!{{ lookPath "bash" }}
-echo 'Installing packages from repo / AUR...'
-# Packages hash: {{ include (joinPath .chezmoi.homeDir ".config/packages/packages") | sha256sum }}
-yay -Syu --needed --batchinstall --noprovides --noconfirm - < {{ (joinPath .chezmoi.homeDir ".config/packages/packages") }}
-{{- end }}

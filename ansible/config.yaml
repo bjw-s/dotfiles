@@ -1,0 +1,106 @@
+---
+packages:
+  asdf:
+    version: "v0.9.0"
+    plugins:
+      - name: "python"
+        repository: "https://github.com/danhper/asdf-python"
+        versions:
+          - 3.10.1
+        delete_versions: []
+        global: system
+
+  brew:
+    taps: []
+    casks:
+      darwin:
+        - 1password
+        - bartender
+        - bettertouchtool
+        - gpg-suite
+        - iterm2
+        - rocket
+        - shottr
+    packages:
+      common:
+        - age
+        - bat
+        - direnv
+        - fluxcd/tap/flux
+        - fzf
+        - gh
+        - git
+        - go-task/tap/go-task
+        - jq
+        - krew
+        - kubie
+        - jjuarez/homebrew-tap-1/kubecolor
+        - kubeconform
+        - kustomize
+        - lsd
+        - sops
+        - starship
+        - stern
+        - terraform
+        - yq
+        - zoxide
+      darwin:
+        - openssl
+      linux: []
+    packages_from_source: []
+
+  os:
+    linux:
+      common: []
+      archlinux:
+        - base-devel
+        - aur/visual-studio-code-bin
+
+  other_binaries:
+    - type: github_release
+      repository: budimanjojo/talhelper
+      asset: "talhelper_$os_$arch.tar.gz"
+      version: v1.4.0
+      format: archive
+      filter:
+        - talhelper
+
+    - type: github_release
+      repository: onedr0p/gluctl
+      asset: "gluctl-$os-$arch"
+      version: v0.1.0
+      format: raw
+      rename_to: gluctl
+
+    - type: github_release
+      repository: siderolabs/talos
+      asset: "talosctl-$os-$arch"
+      version: v1.2.1
+      format: raw
+      rename_to: talosctl
+
+    - type: http
+      url: "https://storage.googleapis.com/kubernetes-release/release/$version/bin/$os/$arch/kubectl"
+      version: v1.24.4
+      format: raw
+
+    - type: http
+      url: "https://get.helm.sh/helm-$version-$os-$arch.tar.gz"
+      version: v3.9.4
+      format: archive
+      unpack_opts:
+        - --strip=1
+      filter:
+        - "$os-$arch/helm"
+
+dotfiles:
+  repo: 'https://github.com/bjw-s/dotfiles'
+  branch: 'refactor'
+
+fish:
+  plugins:
+    - franciscolourenco/done
+    - jorgebucaran/nvm.fish
+    - kidonng/zoxide.fish
+    - nickeb96/puffer-fish
+    - PatrickF1/fzf.fish
