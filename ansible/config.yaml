@@ -42,6 +42,7 @@ packages:
         - starship
         - stern
         - terraform
+        - tmux
         - yq
         - zoxide
       darwin:

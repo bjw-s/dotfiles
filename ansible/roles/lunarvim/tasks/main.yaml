@@ -19,7 +19,7 @@
   ansible.builtin.file:
     path: "{{ xdg_config_home }}/lvim"
     state: directory
-    mode: '0700'
+    mode: '0755'
 
 - name: "install"
   ansible.builtin.command: /tmp/install-lunarvim.sh --no-install-dependencies --yes
