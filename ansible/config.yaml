@@ -25,7 +25,9 @@ packages:
       common:
         - age
         - bat
+        - cue
         - direnv
+        - dog
         - fluxcd/tap/flux
         - fzf
         - gh
@@ -37,13 +39,17 @@ packages:
         - jjuarez/homebrew-tap-1/kubecolor
         - kubeconform
         - kustomize
+        - lazygit
         - less
         - lsd
+        - shellcheck
         - sops
         - starship
         - stern
         - terraform
         - tmux
+        - vault
+        - viddy
         - yq
         - zoxide
       darwin:
