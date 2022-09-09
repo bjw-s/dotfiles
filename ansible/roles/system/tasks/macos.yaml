@@ -1,0 +1,12 @@
+---
+- name: Allow sudo with TouchID
+  become: true
+  pamd:
+    name: sudo
+    type: auth
+    control: sufficient
+    module_path: pam_smartcard.so
+    new_type: auth
+    new_control: sufficient
+    new_module_path: pam_tid.so
+    state: before

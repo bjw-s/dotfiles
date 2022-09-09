@@ -1,0 +1,4 @@
+---
+- import_tasks: macos.yaml
+  when:
+    - ansible_system == "Darwin"

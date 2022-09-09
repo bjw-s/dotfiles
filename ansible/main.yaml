@@ -29,3 +29,6 @@
 
     - name: dotfiles
       tags: dotfiles
+
+    - name: system
+      tags: system
