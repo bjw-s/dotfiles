@@ -6,9 +6,9 @@ packages:
       - name: "python"
         repository: "https://github.com/danhper/asdf-python"
         versions:
-          - 3.10.1
+          - 3.10.4
         delete_versions: []
-        global: system
+        global: 3.10.4
 
   brew:
     taps: []
