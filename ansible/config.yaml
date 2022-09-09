@@ -34,7 +34,6 @@ packages:
         - git
         - go-task/tap/go-task
         - jq
-        - krew
         - kubie
         - jjuarez/homebrew-tap-1/kubecolor
         - kubeconform
@@ -87,6 +86,14 @@ packages:
       version: v1.2.1
       format: raw
       source: "talosctl-$os-$arch"
+
+    - name: krew
+      type: github_release
+      repository: kubernetes-sigs/krew
+      asset: "krew-$os_$arch.tar.gz"
+      version: v0.4.3
+      format: archive
+      source: "krew-$os_$arch"
 
     - name: kubectl
       type: http
