@@ -12,6 +12,7 @@
       changed_when: false
 
     - name: add homebrew fish to /etc/shells
+      become: true
       ansible.builtin.lineinfile:
         dest: /etc/shells
         line: "{{ fish_path.stdout }}"
