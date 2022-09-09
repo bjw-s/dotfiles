@@ -108,6 +108,12 @@ packages:
       format: archive
       source: "$os-$arch/helm"
 
+    - name: ssh-ident
+      type: http
+      url: "https://raw.githubusercontent.com/ssh-ident/ssh-ident1/$version/ssh-ident"
+      version: d067741309
+      format: raw
+
 dotfiles:
   repo: 'https://github.com/bjw-s/dotfiles'
   branch: 'refactor'
