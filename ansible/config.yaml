@@ -65,41 +65,41 @@ packages:
         - aur/visual-studio-code-bin
 
   other_binaries:
-    - type: github_release
+    - name: talhelper
+      type: github_release
       repository: budimanjojo/talhelper
       asset: "talhelper_$os_$arch.tar.gz"
       version: v1.4.0
       format: archive
-      filter:
-        - talhelper
 
-    - type: github_release
+    - name: gluctl
+      type: github_release
       repository: onedr0p/gluctl
       asset: "gluctl-$os-$arch"
       version: v0.1.0
       format: raw
-      rename_to: gluctl
+      source: "gluctl-$os-$arch"
 
-    - type: github_release
+    - name: talosctl
+      type: github_release
       repository: siderolabs/talos
       asset: "talosctl-$os-$arch"
       version: v1.2.1
       format: raw
-      rename_to: talosctl
+      source: "talosctl-$os-$arch"
 
-    - type: http
+    - name: kubectl
+      type: http
       url: "https://storage.googleapis.com/kubernetes-release/release/$version/bin/$os/$arch/kubectl"
       version: v1.24.4
       format: raw
 
-    - type: http
+    - name: helm
+      type: http
       url: "https://get.helm.sh/helm-$version-$os-$arch.tar.gz"
       version: v3.9.4
       format: archive
-      unpack_opts:
-        - --strip=1
-      filter:
-        - "$os-$arch/helm"
+      source: "$os-$arch/helm"
 
 dotfiles:
   repo: 'https://github.com/bjw-s/dotfiles'

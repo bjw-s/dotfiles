@@ -13,8 +13,12 @@
   when:
     - ansible_system in ["Linux", "Darwin"]
 
-- import_tasks: other_binaries.yaml
+- include_tasks: other_binaries.yaml
   tags: other_binaries
+  vars:
+    install_path: "{{ ansible_user_dir }}/.local/bin"
+  with_items: |-
+    {{ packages.other_binaries }}
   when:
     - ansible_system in ["Linux", "Darwin"]
     - packages.other_binaries is defined

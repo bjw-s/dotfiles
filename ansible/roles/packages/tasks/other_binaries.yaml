@@ -1,84 +1,83 @@
 ---
-- name: "download and extract archives from GitHub releases"
+- name: "Check if {{ install_path }}/archive exists"
+  file:
+    path: "{{ install_path }}/archive"
+    state: directory
+    mode: '0755'
+
+- name: "{{ item.name }} | Check if version {{ item.version }} is present"
+  ansible.builtin.stat:
+    path: "{{ install_path }}/archive/{{ item.name }}-{{ item.version }}"
+  register: desired_binary_version
+
+- name: "{{ item.name }} | Download and link to version {{ version }}"
   vars:
-    url: "https://github.com/{{ item.repository }}/releases/download/{{ item.version }}/{{ item.asset }}"
-    parsed_url: |
+    url: |-
+      {%- if item.type == "github_release" -%}
+        https://github.com/{{ item.repository }}/releases/download/{{ item.version }}/{{ item.asset }}
+      {%- elif item.type == "http" -%}
+        {{ item.url }}
+      {%- endif -%}
+    parsed_url: |-
       {{
         url
-          | replace("$os", os)
-          | replace("$arch", arch)
-      }}
-    parsed_filter: |
-      {{
-        item.filter
-          | default([])
           | replace("$version", item.version)
           | replace("$os", os)
           | replace("$arch", arch)
       }}
-  ansible.builtin.unarchive:
-    remote_src: yes
-    src: "{{ parsed_url }}"
-    dest: "{{ ansible_user_dir }}/.local/bin"
-    include: "{{ parsed_filter }}"
-    extra_opts: "{{ item.unpack_opts | default([]) }}"
-  with_items: |-
-    {{ packages.other_binaries | selectattr("type", "equalto", "github_release") | selectattr("format", "equalto", "archive") }}
+    parsed_source:  |-
+      {{-
+        (item.source | default(item.name))
+          | replace("$version", item.version)
+          | replace("$os", os)
+          | replace("$arch", arch)
+      }}
+  block:
+    - name: "{{ item.name }} | Create tempdir"
+      ansible.builtin.tempfile:
+        state: directory
+        suffix: dwnld
+        path: /tmp
+      register: tempfolder_dwnld
 
-- name: "download and install binaries from GitHub releases"
-  vars:
-    url: "https://github.com/{{ item.repository }}/releases/download/{{ item.version }}/{{ item.asset }}"
-    parsed_url: |
-      {{
-        url
-          | replace("$os", os)
-          | replace("$arch", arch)
-      }}
-  ansible.builtin.get_url:
-    url: "{{ parsed_url }}"
-    dest: "{{ ansible_user_dir }}/.local/bin/{{ item.rename_to | default('') }}"
-    mode: '0770'
-  with_items: |-
-    {{ packages.other_binaries | selectattr("type", "equalto", "github_release") | selectattr("format", "equalto", "raw") }}
+    - name: "{{ item.name }} | Download"
+      ansible.builtin.get_url:
+        url: "{{ parsed_url }}"
+        dest: "{{ tempfolder_dwnld.path }}"
+      when:
+        - tempfolder_dwnld.path is defined
+        - item.format == 'raw'
 
-- name: "download and extract archives from URLs"
-  vars:
-    parsed_url: |
-      {{
-        item.url
-          | replace("$version", item.version)
-          | replace("$os", os)
-          | replace("$arch", arch)
-      }}
-    parsed_filter: |
-      {{
-        item.filter
-          | default([])
-          | replace("$version", item.version)
-          | replace("$os", os)
-          | replace("$arch", arch)
-      }}
-  ansible.builtin.unarchive:
-    remote_src: yes
-    src: "{{ parsed_url }}"
-    dest: "{{ ansible_user_dir }}/.local/bin"
-    include: "{{ parsed_filter }}"
-    extra_opts: "{{ item.unpack_opts | default([]) }}"
-  with_items: |-
-    {{ packages.other_binaries | selectattr("type", "equalto", "http") | selectattr("format", "equalto", "archive") }}
+    - name: "{{ item.name }} | Download and extract"
+      ansible.builtin.unarchive:
+        remote_src: yes
+        src: "{{ parsed_url }}"
+        dest: "{{ tempfolder_dwnld.path }}"
+        extra_opts: "{{ item.unpack_opts | default([]) }}"
+      when:
+        - tempfolder_dwnld.path is defined
+        - item.format == 'archive'
 
-- name: "download and install binaries from URLs"
-  vars:
-    parsed_url: |
-      {{
-        item.url
-          | replace("$version", item.version)
-          | replace("$os", os)
-          | replace("$arch", arch)
-      }}
-  ansible.builtin.get_url:
-    url: "{{ parsed_url }}"
-    dest: "{{ ansible_user_dir }}/.local/bin/{{ item.rename_to | default('') }}"
-    mode: '0770'
-  with_items: |-
-    {{ packages.other_binaries | selectattr("type", "equalto", "http") | selectattr("format", "equalto", "raw") }}
+    - name: "{{ item.name }} | Copy binary to archive"
+      ansible.builtin.copy:
+        src: "{{ tempfolder_dwnld.path }}/{{ parsed_source }}"
+        dest: "{{ install_path }}/archive/{{ item.name }}-{{ item.version }}"
+        mode: '0770'
+      when:
+        - tempfolder_dwnld.path is defined
+
+  when: not desired_binary_version.stat.exists
+  always:
+    - name: "{{ item.name }} | Delete {{ tempfolder_dwnld.path }}"
+      ansible.builtin.file:
+        path: "{{ tempfolder_dwnld.path }}"
+        state: absent
+      when: tempfolder_dwnld.path is defined
+      ignore_errors: true
+
+- name: "{{ item.name }} | Link {{ item.name }}-{{ item.version }} -> {{ repo }}"
+  file:
+    src: "{{ install_path }}/archive/{{ item.name }}-{{ item.version }}"
+    dest: "{{ install_path }}/{{ item.name }}"
+    state: link
+    force: yes
