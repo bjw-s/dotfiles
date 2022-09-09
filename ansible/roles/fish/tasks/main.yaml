@@ -11,6 +11,12 @@
       register: fish_path
       changed_when: false
 
+    - name: add homebrew fish to /etc/shells
+      ansible.builtin.lineinfile:
+        dest: /etc/shells
+        line: "{{ fish_path.stdout }}"
+        state: present
+
     - name: "change default shell to fish"
       become: true
       ansible.builtin.user:
