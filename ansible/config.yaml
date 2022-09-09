@@ -37,6 +37,7 @@ packages:
         - jjuarez/homebrew-tap-1/kubecolor
         - kubeconform
         - kustomize
+        - less
         - lsd
         - sops
         - starship
