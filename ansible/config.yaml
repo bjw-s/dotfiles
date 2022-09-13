@@ -31,6 +31,7 @@ packages:
     packages:
       common:
         - age
+        - azure-cli
         - bash
         - bat
         - coreutils
@@ -88,6 +89,9 @@ packages:
         - mopidy-youtube
         - mopidy-mpd
         - mpdris2
+        - opensc
+        - openvpn
+        - openvpn-update-systemd-resolved
         - sway
         - swayidle
         - waybar
