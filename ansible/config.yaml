@@ -17,22 +17,35 @@ packages:
         - 1password
         - bartender
         - bettertouchtool
+        - discord
+        - espanso
+        - forklift
         - gpg-suite
         - iterm2
+        - keka
+        - maccy
+        - raycast
         - rocket
         - shottr
+        - visual-studio-code
     packages:
       common:
         - age
+        - bash
         - bat
+        - coreutils
         - cue
+        - curl
         - direnv
         - dog
+        - findutils
         - fluxcd/tap/flux
         - fzf
         - gh
         - git
+        - gnu-sed
         - go-task/tap/go-task
+        - grep
         - jq
         - kubie
         - jjuarez/homebrew-tap-1/kubecolor
@@ -41,24 +54,32 @@ packages:
         - lazygit
         - less
         - lsd
+        - pre-commit
         - shellcheck
         - sops
         - starship
         - stern
         - terraform
+        - topgrade
         - tmux
+        - tree
         - vault
         - viddy
+        - wget
         - yq
+        - ykman
         - zoxide
       darwin:
         - openssl
+        - pinentry-mac
+        - terminal-notifier
       linux: []
     packages_from_source: []
 
   os:
     linux:
-      common: []
+      common:
+        - alacritty
       archlinux:
         - base-devel
         - aur/visual-studio-code-bin

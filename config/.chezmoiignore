@@ -3,6 +3,7 @@
 {{- if eq .chezmoi.os "darwin" }}
 .config/chromium-flags.conf
 
+.config/alacritty
 .config/Code
 .config/kanshi
 .config/mako

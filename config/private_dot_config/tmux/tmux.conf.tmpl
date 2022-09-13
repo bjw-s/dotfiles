@@ -1,0 +1,43 @@
+set -g base-index 1       # Start numbering windows at 1, not 0.
+set -g pane-base-index 1  # Start numbering panes at 1, not 0.
+
+set -g mouse on
+
+## Change Prefix!
+unbind-key C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+bind-key r source-file {{ .chezmoi.homeDir }}/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
+
+bind -n C-t new-window
+bind -n C-w kill-window
+bind -n C-PgDn next-window
+bind -n C-PgUp previous-window
+
+bind -n M-1 select-window -t 1
+bind -n M-2 select-window -t 2
+bind -n M-3 select-window -t 3
+bind -n M-4 select-window -t 4
+bind -n M-5 select-window -t 5
+bind -n M-6 select-window -t 6
+bind -n M-7 select-window -t 7
+bind -n M-8 select-window -t 8
+bind -n M-9 select-window -t:$
+
+# Visually marks windows with unread output
+set -g visual-activity on
+
+# Fix issue with incorrect Vim colors
+set -g default-terminal "xterm-256color"
+
+# Set scrollback history to 10000 (10k)
+set -g history-limit 10000
+
+# Tab appearance
+set -g status-style "bg=default"
+set -g window-status-current-style "bg=default,reverse"
+set -g window-status-separator ''  # No spaces between windows in the status bar.
+set -g window-status-format "#{?window_start_flag,, }#I:#W#{?window_flags,#F, } "
+set -g window-status-current-format "#{?window_start_flag,, }#I:#W#{?window_flags,#F, } "
+set -g status-left ''

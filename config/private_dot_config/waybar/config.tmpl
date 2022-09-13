@@ -1,0 +1,217 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+
+    "position": "top",
+
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "mpd",
+        "custom/separator",
+        "idle_inhibitor",
+        "custom/vpn",
+        "custom/scratchpad_indicator",
+        "tray",
+        "pulseaudio",
+        "network",
+        "battery",
+        "clock",
+        "custom/notification"
+    ],
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        // Connected to AC
+        "format": "  {icon}  {capacity}%", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{icon}  {capacity}%",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M:%S %Z}",
+        "timezones": [
+            "Europe/Amsterdam",
+            "America/New_York"
+        ],
+        "on-click": "date -Iseconds | wl-copy && notify-send 'Date Copied'",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": "  {:%e %b %Y}", // Icon: calendar-alt
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "network": {
+        "interval": 5,
+        "format": "{icon}",
+        "format-disconnected": "{icon} Disconnected",
+        "format-icons": {
+            "wifi": "",
+            "ethernet": "",
+            "disconnected": "⚠"
+        },
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
+        "tooltip": false
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true,
+        "format": "{index} : {icon}",
+        "persistent_workspaces": {
+          "1": [],
+          "2": [],
+          "3": [],
+          "4": [],
+          "5": []
+        },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 3, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "ﱝ {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "ﰝ",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": " Disconnected",
+        "format-stopped": "ﱙ {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+        "interval": 2,
+        "consume-icons": {
+            "on": " " // Icon shows only when "consume" is on
+        },
+        "random-icons": {
+            "off": "", // Icon grayed out when "random" is off
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "mpc -q toggle",
+        "on-click-right": "swaymsg exec \"\\$term_float --command ncmpcpp\""
+    },
+
+    "custom/vpn": {
+        "exec": "~/.config/waybar/modules/waybar-vpn_status",
+        "return-type": "json"
+    },
+
+    "custom/scratchpad_indicator": {
+        "interval": 3,
+        "exec": "~/.config/waybar/modules/waybar-scratchpad_count",
+        "format": "{} ",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {icon} ",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+}

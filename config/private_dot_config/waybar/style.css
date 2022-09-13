@@ -1,0 +1,138 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+@define-color text    @foreground;
+@define-color warn    @color6;
+@define-color crit    @color2;
+@define-color accent  @color4;
+@define-color hilight @color1;
+
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: Roboto, Helvetica, Arial, sans-serif, "Font Awesome 6 Free Solid";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+window#waybar {
+	color: @text;
+	text-shadow: 1px 1px 1px black;
+	background: @background;
+	border-radius: 4px;
+}
+
+window#waybar.top {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+window#waybar.bottom {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+/* Base styling for modules */
+#workspaces,
+#mode,
+#idle_inhibitor,
+#pulseaudio,
+#clock,
+#battery,
+#backlight,
+#taskbar,
+#mpd,
+#network,
+#tray,
+#custom-vpn,
+#custom-scratchpad_indicator {
+	padding: 2px 10px 0px 10px;
+}
+
+#custom-separator {
+	color: @color8;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#workspaces {
+	padding: 0px;
+}
+#workspaces button {
+	color: @text;
+	margin: 0;
+	padding: 3px 5px 0px 5px;
+	border-radius: 0px;
+}
+#workspaces button.focused {
+	color: @hilight;
+	border-bottom: 3px solid @hilight;
+}
+
+#mode {
+	color: @warn;
+}
+
+#battery.good {
+	color: @good;
+}
+
+#battery.warning {
+	background: @background;
+	color: @warn;
+}
+
+#battery.critical,
+#custom-vpn.off,
+#network.disconnected {
+	background: @background;
+	color: @crit;
+	border-bottom: 3px solid @crit;
+}
+
+#clock {
+	margin-left: 3px;
+}
+
+#taskbar {
+	padding-left: 0;
+}
+#taskbar button {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#taskbar button.active {
+	color: @accent;
+}
+
+/* Pad the tray so the bottom bar doesn't change size when no windows are open */
+#tray {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+#custom-vpn.on,
+#network.ethernet,
+#network.wifi {
+  border-bottom: 3px solid @hilight;
+}
+
+#idle_inhibitor.activated {
+  border-bottom: 3px solid @accent;
+}
+
+#mpd.playing {
+	border-bottom: 3px solid @accent;
+}
+
+#custom-notification.dnd-notification,
+#custom-notification.notification,
+#mpd.paused {
+	border-bottom: 3px solid @warn;
+}
+
+#mpd.stopped {
+	border-bottom: 3px solid @crit;
+}
