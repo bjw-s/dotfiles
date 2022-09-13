@@ -10,10 +10,14 @@
   repositories: ["bjw-s/dotfiles"],
   regexManagers: [
     {
-      fileMatch: ["home\\/\\.chezmoiscripts\\/.+\\.sh\\.tmpl$"],
-      matchStrings: [
-        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n\\s*current_\\w+_version=(?<currentValue>.+)\\b",
+      "description": ["Process various dependencies"],
+      "fileMatch": [
+        "ansible/config.yaml"
       ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?\n.*: (?<currentValue>.*=?)",
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
   ],
   packageRules: [],

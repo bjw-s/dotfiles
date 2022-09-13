@@ -113,6 +113,7 @@ packages:
       type: github_release
       repository: budimanjojo/talhelper
       asset: "talhelper_$os_$arch.tar.gz"
+      # renovate: depName=budimanjojo/talhelper datasource=github-releases
       version: v1.4.0
       format: archive
 
@@ -120,6 +121,7 @@ packages:
       type: github_release
       repository: onedr0p/gluctl
       asset: "gluctl-$os-$arch"
+      # renovate: depName=onedr0p/gluctl datasource=github-releases
       version: v0.1.0
       format: raw
       source: "gluctl-$os-$arch"
@@ -128,6 +130,7 @@ packages:
       type: github_release
       repository: siderolabs/talos
       asset: "talosctl-$os-$arch"
+      # renovate: depName=siderolabs/talos datasource=github-releases
       version: v1.2.1
       format: raw
       source: "talosctl-$os-$arch"
@@ -136,6 +139,7 @@ packages:
       type: github_release
       repository: kubernetes-sigs/krew
       asset: "krew-$os_$arch.tar.gz"
+      # renovate: depName=kubernetes-sigs/krew datasource=github-releases
       version: v0.4.3
       format: archive
       source: "krew-$os_$arch"
@@ -143,12 +147,14 @@ packages:
     - name: kubectl
       type: http
       url: "https://storage.googleapis.com/kubernetes-release/release/$version/bin/$os/$arch/kubectl"
+      # renovate: depName=kubernetes/kubectl datasource=github-tags
       version: v1.24.4
       format: raw
 
     - name: helm
       type: http
       url: "https://get.helm.sh/helm-$version-$os-$arch.tar.gz"
+      # renovate: depName=helm/helm datasource=github-releases
       version: v3.9.4
       format: archive
       source: "$os-$arch/helm"
