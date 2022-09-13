@@ -84,16 +84,20 @@ packages:
       common:
         - 1password
         - alacritty
+        - chromium
+        - evolution
         - grimshot
         - kanshi
         - mako
         - mopidy
         - mopidy-youtube
         - mopidy-mpd
+        - mpc
         - mpdris2
         - opensc
         - openvpn
         - openvpn-update-systemd-resolved
+        - python-pywal
         - sway
         - swayidle
         - waybar
