@@ -1,0 +1,43 @@
+---
+- name: "brew | list packages"
+  ansible.builtin.debug:
+    msg: "{{ pkgs }}"
+  when: pkgs is defined
+
+- name: "brew | update"
+  community.general.homebrew:
+    update_homebrew: true
+
+- name: "brew | install taps"
+  community.general.homebrew_tap:
+    name: "{{ packages.brew.taps }}"
+    state: present
+  when:
+    - packages.brew.taps is defined
+    - packages.brew.taps | length > 0
+
+- name: "brew | install casks"
+  community.general.homebrew_cask:
+    name: "{{ packages.brew.casks.darwin }}"
+    state: present
+    install_options: no-quarantine
+    accept_external_apps: true
+  when:
+    - packages.brew.casks is defined
+    - packages.brew.casks | length > 0
+    - ansible_system == "Darwin"
+
+- name: "brew | install packages"
+  community.general.homebrew:
+    name: "{{ pkgs }}"
+  when:
+    - pkgs is defined
+    - pkgs | length > 0
+
+- name: "brew | install packages from source"
+  community.general.homebrew:
+    name: "{{ packages.brew.packages_from_source }}"
+    install_options: build-from-source
+  when:
+    - packages.brew.packages_from_source is defined
+    - packages.brew.packages_from_source | length > 0

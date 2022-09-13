@@ -1,0 +1,14 @@
+---
+- name: "install firacode font"
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: aur/nerd-fonts-fira-code
+    state: present
+
+- name: "install powerline font"
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: community/awesome-terminal-fonts
+    state: present

@@ -1,0 +1,74 @@
+---
+- name: "install"
+  community.general.homebrew:
+    name:
+      - 'fish'
+  tags: homebrew
+
+- block:
+    - name: "obtain path to fish"
+      ansible.builtin.command: which fish
+      register: fish_path
+      changed_when: false
+
+    - name: add homebrew fish to /etc/shells
+      become: true
+      ansible.builtin.lineinfile:
+        dest: /etc/shells
+        line: "{{ fish_path.stdout }}"
+        state: present
+
+    - name: "change default shell to fish"
+      become: true
+      ansible.builtin.user:
+        name: '{{ ansible_user }}'
+        shell: '{{ fish_path.stdout }}'
+        system: true
+
+  tags: fish_chsh
+
+- block:
+    - name: "create fish config dir"
+      ansible.builtin.file:
+        path: "{{ xdg_config_home }}/fish"
+        state: directory
+        mode: '0700'
+
+    - name: "obtain path to fish"
+      ansible.builtin.command: which fish
+      register: fish_path
+      changed_when: false
+      check_mode: false
+
+    - name: "create functions dir"
+      ansible.builtin.file:
+        path: "{{ xdg_config_home }}/fish/functions"
+        state: directory
+        mode: '0755'
+
+    - name: "install fisher"
+      ansible.builtin.get_url:
+        url: https://git.io/fisher
+        dest: "{{ xdg_config_home }}/fish/functions/fisher.fish"
+        mode: '0755'
+      register: download_result
+      until: download_result is succeeded
+      retries: 3
+      delay: 5
+
+    - name: "manage fisher plugins file"
+      ansible.builtin.copy:
+        dest: "{{ xdg_config_home }}/fish/fish_plugins"
+        mode: 0600
+        content: |
+          {% for plugin in (fish.plugins | sort) %}
+          {{ plugin }}
+          {% endfor %}
+
+    - name: "install plugins with fisher"
+      ansible.builtin.shell: "source {{ xdg_config_home }}/fish/functions/fisher.fish; fisher update"
+      args:
+        executable: '{{ fish_path.stdout }}'
+      changed_when: false
+
+  tags: fish_config

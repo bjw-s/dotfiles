@@ -1,0 +1,7 @@
+".config/fish/completions/docker.fish":
+  type: "file"
+  url: "https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish"
+  refreshPeriod: "672h"
+".config/fish/completions/kubie.fish":
+  type: "file"
+  url: "https://raw.githubusercontent.com/sbstp/kubie/v0.19.0/completion/kubie.fish"

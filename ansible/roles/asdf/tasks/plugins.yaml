@@ -1,0 +1,61 @@
+---
+- name: "asdf plugin-add"
+  ansible.builtin.command: 'asdf plugin add {{ item.name }} {{ item.repository | default() }}'
+  environment:
+    PATH: "{{ ansible_user_dir }}/.asdf/bin:{{ ansible_env.PATH }}"
+    ASDF_DATA_DIR: "{{ xdg_data_home }}/asdf"
+  args:
+    creates: 'asdf/plugins/{{ item.name }}'
+    chdir: '{{ xdg_data_home }}'
+  with_items: '{{ packages.asdf.plugins }}'
+  when:
+    - packages.asdf.plugins is defined
+    - packages.asdf.plugins | length > 0
+  ignore_errors: false
+
+- name: "install desired software versions"
+  ansible.builtin.command: 'asdf install {{ item.0.name }} {{ item.1 }}'
+  environment:
+    PATH: "{{ ansible_user_dir }}/.asdf/bin:{{ ansible_env.PATH }}"
+    ASDF_DATA_DIR: "{{ xdg_data_home }}/asdf"
+  args:
+    creates: "asdf/installs/{{ item.0.name }}/{{ item.1 }}"
+    chdir: "{{ xdg_data_home }}"
+  with_subelements:
+    - "{{ packages.asdf.plugins }}"
+    - versions
+    - flags:
+      skip_missing: true
+  when:
+    - packages.asdf.plugins is defined
+    - packages.asdf.plugins | length > 0
+
+- name: "uninstall desired software versions"
+  ansible.builtin.command: 'asdf uninstall {{ item.0.name }} {{ item.1 }}'
+  environment:
+    PATH: "{{ ansible_user_dir }}/.asdf/bin:{{ ansible_env.PATH }}"
+    ASDF_DATA_DIR: "{{ xdg_data_home }}/asdf"
+  args:
+    removes: "asdf/installs/{{ item.0.name }}/{{ item.1 }}"
+    chdir: "{{ xdg_data_home }}"
+  with_subelements:
+    - "{{ packages.asdf.plugins }}"
+    - delete_versions
+    - flags:
+      skip_missing: true
+  when:
+    - packages.asdf.plugins is defined
+    - packages.asdf.plugins | length > 0
+
+- name: "set global software versions"
+  ansible.builtin.command: >
+    asdf global {{ item.name }}
+    {{ item.global | default(item.versions | difference(item.delete_versions|default([])) | sort | first) }}
+  environment:
+    PATH: "{{ ansible_user_dir }}/.asdf/bin:{{ ansible_env.PATH }}"
+    ASDF_DATA_DIR: "{{ xdg_data_home }}/asdf"
+  args:
+    chdir: "{{ xdg_data_home }}"
+  when: item.global is defined
+  with_items: "{{ packages.asdf.plugins }}"
+  changed_when: false

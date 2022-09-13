@@ -1,0 +1,30 @@
+---
+- name: "packages | list"
+  ansible.builtin.debug:
+    msg: "{{ packages }}"
+  when:
+    - packages is defined
+
+- name: Create the `aur_builder` user
+  become: true
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: true
+    validate: 'visudo -cf %s'
+
+- name: "packages | install"
+  become: true
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    name: "{{ packages }}"
+    state: present
+  when:
+    - packages is defined

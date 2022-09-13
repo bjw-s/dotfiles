@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  strategy: linear
+  connection: local
+
+  vars:
+    os: "{{ (ansible_os_family == 'Darwin') | ternary('darwin', 'linux') }}"
+    arch: "{{ (ansible_architecture == 'arm64') | ternary('arm64', 'amd64') }}"
+
+  vars_files:
+    - defaults/main.yaml
+    - config.yaml
+
+  roles:
+    - name: packages
+      tags: packages
+
+    - name: fonts
+      tags: fonts
+
+    - name: fish
+      tags: fish
+
+    - name: asdf
+      tags: asdf
+
+    - name: lunarvim
+      tags: lunarvim
+
+    - name: dotfiles
+      tags: dotfiles
+
+    - name: system
+      tags: system

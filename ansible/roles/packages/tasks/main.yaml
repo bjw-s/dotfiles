@@ -1,0 +1,25 @@
+---
+- import_tasks: linux.yaml
+  when: ansible_system == "Linux"
+
+- name: "merge common and platform specific packages"
+  ansible.builtin.set_fact:
+    brew_pkgs_merged: "{{ packages.brew.packages.common | union(packages.brew.packages[ansible_system|lower] | d([])) }}"
+
+- import_tasks: brew.yaml
+  vars:
+    pkgs: '{{ brew_pkgs_merged }}'
+  tags: homebrew
+  when:
+    - ansible_system in ["Linux", "Darwin"]
+
+- include_tasks: other_binaries.yaml
+  tags: other_binaries
+  vars:
+    install_path: "{{ ansible_user_dir }}/.local/bin"
+  with_items: |-
+    {{ packages.other_binaries }}
+  when:
+    - ansible_system in ["Linux", "Darwin"]
+    - packages.other_binaries is defined
+    - packages.other_binaries | length > 0

@@ -1,7 +1,0 @@
-set -gx ASDF_DATA_DIR "$XDG_DATA_HOME/asdf"
-
-{{ if eq .chezmoi.os "linux" -}}
-source /opt/asdf-vm/asdf.fish
-{{- else if eq .chezmoi.os "darwin" -}}
-source ({{ (lookPath "brew") }} --prefix asdf)/libexec/asdf.fish
-{{- end }}

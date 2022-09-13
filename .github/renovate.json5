@@ -3,8 +3,6 @@
   extends: [
     "github>bjw-s/renovate-config",
     "github>bjw-s/renovate-config:automerge-github-actions",
-    "github>aquaproj/aqua-renovate-config:installer-script#0.1.8(home/.chezmoiscripts/.*install-prerequisites\\.sh\\.tmpl)",
-    "github>aquaproj/aqua-renovate-config:file#0.1.8(home/private_dot_config/aqua/aqua\\.yaml\\.tmpl)",
   ],
   platform: "github",
   username: "bjw-s-bot[bot]",
@@ -12,38 +10,15 @@
   repositories: ["bjw-s/dotfiles"],
   regexManagers: [
     {
-      fileMatch: ["home\\/\\.chezmoiscripts\\/.+\\.sh\\.tmpl$"],
-      matchStrings: [
-        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n\\s*current_\\w+_version=(?<currentValue>.+)\\b",
+      "description": ["Process various dependencies"],
+      "fileMatch": [
+        "ansible/config.yaml"
       ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?\n.*: (?<currentValue>.*=?)",
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
   ],
-  packageRules: [
-    {
-      matchUpdateTypes: ["major"],
-      semanticCommitType: "feat!",
-    },
-    {
-      matchUpdateTypes: ["minor"],
-      semanticCommitType: "feat",
-    },
-    {
-      matchUpdateTypes: ["patch"],
-      semanticCommitType: "fix",
-    },
-    {
-      matchManagers: ["github-actions"],
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchUpdateTypes: ["minor", "patch"],
-    },
-    {
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchUpdateTypes: ["minor", "patch"],
-      matchPackageNames: ["aquaproj/aqua-registry"],
-    },
-  ],
+  packageRules: [],
 }

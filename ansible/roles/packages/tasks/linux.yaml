@@ -1,0 +1,9 @@
+---
+- name: "merge common and distribution specific packages"
+  ansible.builtin.set_fact:
+    os_pkgs_merged: "{{ packages.os.linux.common | union(packages.os.linux[ansible_os_family | lower] | d([])) }}"
+
+- import_tasks: "linux_arch.yaml"
+  vars:
+    packages: "{{ os_pkgs_merged }}"
+  when: ansible_os_family == "Archlinux"

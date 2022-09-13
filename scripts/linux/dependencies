@@ -1,0 +1,10 @@
+# Bare necessities
+ca-certificates
+git
+
+# Download manager
+curl
+wget
+
+# Ansible
+ansible
