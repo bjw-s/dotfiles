@@ -18,6 +18,7 @@ packages:
         - bartender
         - bettertouchtool
         - discord
+        - docker
         - espanso
         - forklift
         - gpg-suite
@@ -74,7 +75,8 @@ packages:
         - openssl
         - pinentry-mac
         - terminal-notifier
-      linux: []
+      linux:
+        - docker
     packages_from_source: []
 
   os:
