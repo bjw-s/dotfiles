@@ -79,9 +79,23 @@ packages:
   os:
     linux:
       common:
+        - 1password
         - alacritty
+        - grimshot
+        - kanshi
+        - mako
+        - mopidy
+        - mopidy-youtube
+        - mopidy-mpd
+        - mpdris2
+        - sway
+        - swayidle
+        - waybar
       archlinux:
         - base-devel
+        - aur/espanso-wayland-git
+        - aur/swaylock-effects-git
+        - aur/swaync-git
         - aur/visual-studio-code-bin
 
   other_binaries:
