@@ -1,0 +1,50 @@
+---
+- name: "{{ font_name }} | Check if font is present"
+  ansible.builtin.stat:
+    path: "{{ install_path }}/{{ font_name }}"
+  register: font_install_path
+
+- name: "{{ font_name }} | Download and install"
+  block:
+    - name: "Create tempdir"
+      ansible.builtin.tempfile:
+        state: directory
+        suffix: dwnld
+        path: /tmp
+      register: tempfolder_dwnld
+
+    - name: "Download"
+      ansible.builtin.get_url:
+        url: "{{ url }}"
+        dest: "{{ tempfolder_dwnld.path }}"
+      when:
+        - tempfolder_dwnld.path is defined
+        - font_format == 'raw'
+
+    - name: "Download and extract"
+      ansible.builtin.unarchive:
+        remote_src: yes
+        src: "{{ url }}"
+        dest: "{{ tempfolder_dwnld.path }}"
+        extra_opts: "{{ unpack_opts | default([]) }}"
+      when:
+        - tempfolder_dwnld.path is defined
+        - font_format == 'archive'
+
+    - name: "Copy font files to target folder"
+      ansible.builtin.copy:
+        src: |-
+          {{ tempfolder_dwnld.path }}/{{ filter | default("") }}
+        dest: "{{ install_path }}/{{ font_name }}/"
+        mode: '0770'
+      when:
+        - tempfolder_dwnld.path is defined
+
+  when: not font_install_path.stat.exists
+  always:
+    - name: "{{ font_name }} | Delete {{ tempfolder_dwnld.path }}"
+      ansible.builtin.file:
+        path: "{{ tempfolder_dwnld.path }}"
+        state: absent
+      when: tempfolder_dwnld.path is defined
+      ignore_errors: true
