@@ -1,21 +1,28 @@
 #!/bin/env bash
+check_private_address() {
+  PATTERN='^10\.' #  10.0.0.0/8
+  PATTERN+='|^192\.168\.'  # 192.168.0.0/16
+  PATTERN+='|^169\.254\.' # not strictly private range, but link local
+  for i in $(seq 16 31) ; do # 172.16.0.0/12
+    PATTERN+="|^172\.$i\."
+  done
 
-ENDPOINT_FILE="$HOME/vpn/test_endpoint"
-
-vpn() {
-  if [ -f "${ENDPOINT_FILE}" ]; then
-    if ping $(cat "${ENDPOINT_FILE}") -c 1 > /dev/null 2>&1; then
-      icon=""
-      class=on
-    else
-      icon=""
-      class=off
-    fi
-    printf '{"text": " %s ", "class": "%s"}\n' "$icon" "$class"
+  ip_address=$(host "${1}" | cut -d" " -f4)
+  if (echo "$ip_address" | grep -q -E $PATTERN); then
+    icon=""
+    class=on
+  else
+    icon=""
+    class=off
   fi
+  printf '{"text": " %s ", "class": "%s"}\n' "$icon" "$class"
 }
 
 while true; do
-  vpn
+  ENDPOINT_FILE="$HOME/vpn/test_endpoint"
+  if [ -f "${ENDPOINT_FILE}" ]; then
+    host_to_check=$(cat "${ENDPOINT_FILE}")
+    check_private_address $host_to_check
+  fi
   sleep 30s
 done
