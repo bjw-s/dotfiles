@@ -10,6 +10,13 @@ packages:
         delete_versions: []
         global: 3.10.4
 
+      - name: "golang"
+        repository: "https://github.com/kennyp/asdf-golang"
+        versions:
+          - 1.19.1
+        delete_versions: []
+        global: system
+
   brew:
     taps: []
     casks:
