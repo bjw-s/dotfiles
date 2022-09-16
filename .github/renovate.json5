@@ -8,18 +8,6 @@
   username: "bjw-s-bot[bot]",
   gitAuthor: "bjw-s-bot <87358111+bjw-s-bot[bot]@users.noreply.github.com>",
   repositories: ["bjw-s/dotfiles"],
-  regexManagers: [
-    {
-      "description": ["Process various dependencies"],
-      "fileMatch": [
-        "ansible/config.yaml"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?( versionTemplate=(?<versionTemplate>.*=?))?\n.*: (?<currentValue>.*=?)",
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-      "extractVersionTemplate": "{{#if versionTemplate}}{{{versionTemplate}}}{{else}}{{/if}}"
-    },
-  ],
+  regexManagers: [],
   packageRules: [],
 }
