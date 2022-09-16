@@ -11,6 +11,14 @@ fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 fish_add_path "$HOMEBREW_PREFIX/opt/libpq/bin"
 set -gx HOMEBREW_NO_ANALYTICS 1
 
+if test -d "$HOMEBREW_PREFIX/share/fish/completions"
+  set -gx fish_complete_path $fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
+end
+
+if test -d "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+  set -gx fish_complete_path $fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+end
+
 {{- if eq .chezmoi.os "darwin" }}
 
 set -gx LDFLAGS "-L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/openssl@3/lib"
