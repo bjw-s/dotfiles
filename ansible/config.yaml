@@ -123,7 +123,7 @@ packages:
       repository: budimanjojo/talhelper
       asset: "talhelper_$os_$arch.tar.gz"
       # renovate: datasource=github-releases depName=budimanjojo/talhelper
-      version: v1.4.2
+      version: v1.4.4
       format: archive
 
     - name: gluctl
