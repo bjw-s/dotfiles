@@ -2,6 +2,7 @@
 
 {{- if eq .chezmoi.os "darwin" }}
 .config/chromium-flags.conf
+.config/microsoft-edge-stable-flags.conf
 
 .config/alacritty
 .config/Code

@@ -32,6 +32,7 @@ packages:
         - iterm2
         - keka
         - maccy
+        - microsoft-edge
         - raycast
         - rocket
         - shottr
@@ -111,6 +112,7 @@ packages:
       archlinux:
         - base-devel
         - aur/espanso-wayland-git
+        - aur/microsoft-edge-stable-bin
         - aur/swaylock-effects-git
         - aur/swaync-git
         - aur/visual-studio-code-bin
