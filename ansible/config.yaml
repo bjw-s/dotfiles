@@ -33,6 +33,7 @@ packages:
         - keka
         - maccy
         - microsoft-edge
+        - parsify
         - raycast
         - rocket
         - shottr
