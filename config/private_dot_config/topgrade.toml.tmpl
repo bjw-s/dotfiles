@@ -57,7 +57,7 @@ repos = []
 
 # Commands to run when done
 [post_commands]
-"Chezmoi Apply" = "chezmoi apply"
+"Apply dotfiles repo" = "ansible-playbook -e ansible_user=bjw-s {{$.srcroot}}/{{- if $.work }}personal/{{- end }}github.com/bjw-s/dotfiles/ansible/main.yaml --ask-become-pass"
 
 # Custom commands
 [commands]
