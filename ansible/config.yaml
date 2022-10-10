@@ -34,6 +34,7 @@ packages:
         - maccy
         - microsoft-edge
         - parsify
+        - podman-desktop
         - raycast
         - rocket
         - shottr
@@ -65,6 +66,7 @@ packages:
         - lazygit
         - less
         - lsd
+        - podman
         - pre-commit
         - shellcheck
         - sops
@@ -84,8 +86,6 @@ packages:
         - openssl
         - pinentry-mac
         - terminal-notifier
-      linux:
-        - docker
     packages_from_source: []
 
   os:
