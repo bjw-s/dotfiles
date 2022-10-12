@@ -68,6 +68,7 @@ packages:
         - lsd
         - podman
         - pre-commit
+        - prettier
         - shellcheck
         - sops
         - starship
@@ -94,7 +95,6 @@ packages:
         - 1password
         - alacritty
         - chromium
-        - evolution
         - grimshot
         - kanshi
         - mako
@@ -109,6 +109,7 @@ packages:
         - python-pywal
         - sway
         - swayidle
+        - thunderbird
         - waybar
       archlinux:
         - base-devel
@@ -116,6 +117,9 @@ packages:
         - aur/microsoft-edge-stable-bin
         - aur/swaylock-effects-git
         - aur/swaync-git
+        - aur/thunderbird-tbsync
+        - aur/thunderbird-eas-4-tbsync
+        - aur/thunderbird-dav-4-tbsync
         - aur/visual-studio-code-bin
 
   other_binaries:
