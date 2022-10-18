@@ -79,6 +79,7 @@ packages:
         - tree
         - vault
         - viddy
+        - vivid
         - wget
         - yq
         - ykman
