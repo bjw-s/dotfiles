@@ -1,11 +1,11 @@
 #window {
   border-radius: 2px;
-  border: 2px solid #9aa5ce;
+  border: 2px solid #f7768e;
   background-color: #24283b;
 }
 #input {
   background-color: #24283b;
-  border: 2px solid #c0caf5;
+  border: 2px solid #f7768e;
   padding: 4px;
 }
 
@@ -28,8 +28,8 @@
 
 #entry:selected {
   background-color: #24283b;
-  border: 1px solid #9aa5ce;
+  border: 1px solid #7dcfff;
 }
 #text:selected {
-  color: #c0caf5;
+  color: #7dcfff;
 }
