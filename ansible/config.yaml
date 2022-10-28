@@ -13,9 +13,9 @@ packages:
       - name: "golang"
         repository: "https://github.com/kennyp/asdf-golang"
         versions:
-          - 1.19.1
+          - 1.19.2
         delete_versions: []
-        global: system
+        global: 1.19.2
 
   brew:
     taps: []
