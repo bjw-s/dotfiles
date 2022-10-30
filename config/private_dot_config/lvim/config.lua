@@ -11,7 +11,7 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "tokyonight-moon"
+lvim.colorscheme = "catppuccin-macchiato"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -195,7 +195,8 @@ lvim.plugins = {
   { "christianchiarulli/nvcode-color-schemes.vim" },
   { "ntpeters/vim-better-whitespace" },
   { "GutenYe/json5.vim" },
-  { "folke/tokyonight.nvim" }
+  { "catppuccin/nvim" }
+
   --     {
   --       "folke/trouble.nvim",
   --       cmd = "TroubleToggle",
