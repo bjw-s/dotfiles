@@ -9,7 +9,7 @@ bindsym $mod+Shift+q kill
 
 #### Start launcher
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+p exec $BIN_DIR/wofi_projects.sh
+bindsym $mod+Shift+p exec $BIN_DIR/rofi_projects.sh
 
 #### Reload configuration file
 bindsym $mod+Shift+c exec swaymsg reload && systemctl --user restart kanshi
@@ -82,11 +82,8 @@ bindsym Print exec grimshot --notify copy area
 bindsym Shift+Print exec grimshot --notify copy output
 bindsym Control+Print exec grimshot --notify copy window
 
-#### Launch Emoji dialog
-bindsym $alt+Shift+e exec $BIN_DIR/wofi_emoji.sh insert
-
 #### Launch Power dialog
-bindsym $mod+Shift+Delete exec $BIN_DIR/wofi_power.sh
+bindsym $mod+Shift+Delete exec $BIN_DIR/rofi_power.sh
 
 #### Launch clipboard manager dialog
-bindsym $mod+v exec clipman pick -t wofi
+bindsym $mod+v exec clipman pick -t rofi

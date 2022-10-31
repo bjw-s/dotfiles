@@ -1,3 +1,5 @@
+@import "catppuccin-macchiato.css";
+
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: Roboto, Helvetica, Arial, sans-serif, "Font Awesome 6 Free Solid";
@@ -15,8 +17,8 @@ window#waybar {
 	box-shadow: none;
 	text-shadow: none;
 	transition-duration: 0s;
-	color: rgba(217, 216, 216, 1);
-	background: #24283b;
+	color: @text;
+	background: @base;
 }
 
 #workspaces {
@@ -26,33 +28,33 @@ window#waybar {
 #workspaces button {
 	margin: 0;
 	padding: 0px 5px 0px 5px;
-	color: #565f89;
-	border: 3px solid rgba(9, 85, 225, 0);
+	color: @overlay0;
+	border: 3px solid @base;
 	min-width: 33px;
 }
 
 #workspaces button.visible {
-	color: #a9b1d6;
+	color: @text;
 }
 
 #workspaces button.focused {
-	border-bottom: 3px solid #7aa2f7;
+	border-bottom: 3px solid @mauve;
 }
 
 #workspaces button.urgent {
-	border-bottom: 3px solid #ff9e64;
-	color: #ff9e64;
+	border-bottom: 3px solid @maroon;
+	color: @maroon;
 }
 
 #workspaces button:hover {
 	box-shadow: inherit;
-	border-bottom: 3px solid #bb9af7;
-	color: #565f89;
-	background: #24283b;
+	border-bottom: 3px solid @lavender;
+	color: @overlay0;
+	background: @base;
 }
 
 #workspaces button.focused {
-	color: #7aa2f7;
+	color: @mauve;
 }
 
 /* Base styling for modules */
@@ -76,63 +78,63 @@ window#waybar {
 }
 
 #battery.good {
-	color: #73daca;
-	border-bottom: 3px solid #73daca;
+	color: @green;
+	border-bottom: 3px solid @green;
 }
 
 #battery.charging {
-	color: #bb9af7;
-	border-bottom: 3px solid #bb9af7;
+	color: @lavender;
+	border-bottom: 3px solid @lavender;
 }
 
 #battery.warning {
-	color: #e0af68;
-	border-bottom: 3px solid #e0af68;
+	color: @peach;
+	border-bottom: 3px solid @peach;
 }
 
 #battery.critical {
-	color: #f7768e;
-	border-bottom: 3px solid #f7768e;
+	color: @red;
+	border-bottom: 3px solid @red;
 }
 
 #network.ethernet,
 #network.wifi {
-	border-bottom: 3px solid #73daca;
+	border-bottom: 3px solid @green;
 }
 
 #network.disconnected {
-	color: #f7768e;
-	border-bottom: 3px solid #f7768e;
+	color: @red;
+	border-bottom: 3px solid @red;
 }
 
 #idle_inhibitor.activated {
-  border-bottom: 3px solid #7dcfff;
+  border-bottom: 3px solid @sky;
 }
 
 #mpd.playing {
-	border-bottom: 3px solid #7dcfff;
+	border-bottom: 3px solid @sky;
 }
 
 #mpd.paused {
-	border-bottom: 3px solid #e0af68;
+	border-bottom: 3px solid @peach;
 }
 
 #mpd.stopped {
-	border-bottom: 3px solid #f7768e;
+	border-bottom: 3px solid @red;
 }
 
 #custom-vpn.off {
-	color: #f7768e;
-	border-bottom: 3px solid #f7768e;
+	color: @red;
+	border-bottom: 3px solid @red;
 }
 
 #custom-vpn.on {
-  border-bottom: 3px solid #73daca;
+  border-bottom: 3px solid @green;
 }
 
 #custom-notification.dnd-notification,
 #custom-notification.notification {
-	border-bottom: 3px solid #e0af68;
+	border-bottom: 3px solid @peach;
 }
 
 @keyframes blink {

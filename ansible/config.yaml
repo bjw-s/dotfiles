@@ -115,6 +115,7 @@ packages:
       archlinux:
         - base-devel
         - aur/espanso-wayland-git
+        - aur/rofi-lbonn-wayland-only-git
         - aur/microsoft-edge-stable-bin
         - aur/swaylock-effects-git
         - aur/swaync-git

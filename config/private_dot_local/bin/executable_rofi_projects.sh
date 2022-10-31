@@ -30,9 +30,11 @@ all_projects(){
   printf "%s\n" "${PROJECTS[@]}"
 }
 
-all_projects | wofi --show dmenu --prompt="Select a project" | {
+all_projects | rofi -dmenu -p "Select a project" -l 20 | {
   read -r project name
-  code "$ROOT_FOLDER/$project" > /dev/null 2>&1
+  if [ -n "${project}" ]; then
+    code "$ROOT_FOLDER/$project" > /dev/null 2>&1
+    sleep 1
+    swaymsg [class="Code"] focus
+  fi
 }
-sleep 1
-swaymsg [class="Code"] focus
