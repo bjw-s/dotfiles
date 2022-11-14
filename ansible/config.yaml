@@ -55,6 +55,7 @@ packages:
         - fzf
         - gh
         - git
+        - git-filter-repo
         - gnu-sed
         - go-task/tap/go-task
         - grep
