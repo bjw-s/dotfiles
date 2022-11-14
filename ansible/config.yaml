@@ -131,7 +131,7 @@ packages:
       repository: budimanjojo/talhelper
       asset: "talhelper_$os_$arch.tar.gz"
       # renovate: datasource=github-releases depName=budimanjojo/talhelper
-      version: v1.5.3
+      version: v1.5.4
       format: archive
 
     - name: gluctl
@@ -165,14 +165,14 @@ packages:
       type: http
       url: "https://storage.googleapis.com/kubernetes-release/release/v$version/bin/$os/$arch/kubectl"
       # renovate: datasource=github-tags depName=kubernetes/kubectl versionTemplate=^kubernetes-(?<version>.*)$
-      version: 1.24.4
+      version: 1.25.4
       format: raw
 
     - name: helm
       type: http
       url: "https://get.helm.sh/helm-$version-$os-$arch.tar.gz"
       # renovate: datasource=github-releases depName=helm/helm
-      version: v3.10.1
+      version: v3.10.2
       format: archive
       source: "$os-$arch/helm"
 
