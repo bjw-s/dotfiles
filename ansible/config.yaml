@@ -25,7 +25,6 @@ packages:
         - bartender
         - bettertouchtool
         - discord
-        - docker
         - espanso
         - forklift
         - gpg-suite
