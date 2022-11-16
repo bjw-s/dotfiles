@@ -1,0 +1,41 @@
+[init]
+  defaultBranch = main
+
+{{ if (eq .chezmoi.os "darwin") -}}
+[credential]
+    helper = osxkeychain
+
+{{ end -}}
+
+[core]
+  excludesfile={{ .chezmoi.homeDir }}/.config/git/gitignore_global
+  autocrlf=input
+
+[pull]
+  rebase = false
+
+[tag]
+  forceSignAnnotated = true
+
+[gpg]
+  program=gpg
+
+[commit]
+{{ if or $.personal $.work -}}
+gpgsign = true
+{{- else }}
+gpgsign = false
+{{- end }}
+
+[alias]
+  yolo = !git add -A && git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+
+{{ if $.work -}}
+[includeIf "gitdir:{{ .srcroot }}/work/"]
+  path = {{ .chezmoi.homeDir }}/.config/git/config_work
+
+[includeIf "gitdir:{{ .srcroot }}/personal/"]
+{{- else }}
+[includeIf "gitdir:{{ .srcroot }}/"]
+{{- end }}
+  path = {{ .chezmoi.homeDir }}/.config/git/config_personal

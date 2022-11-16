@@ -1,0 +1,45 @@
+import:
+  - "{{ .chezmoi.homeDir }}/.config/alacritty/catppuccin-macchiato.yaml"
+
+window:
+  dimensions:
+    columns: 200
+    lines: 50
+
+  padding:
+    x: 6
+    y: 6
+
+  dynamic_padding: false
+
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+  opacity: 0.95
+
+scrolling:
+  history: 10000
+
+  multiplier: 3
+
+font:
+  antialias: true
+  autohint: true
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+
+draw_bold_text_with_bright_colors: false
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+live_config_reload: true
+
+env:
+  TERM: xterm-256color

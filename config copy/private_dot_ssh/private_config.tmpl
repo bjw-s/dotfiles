@@ -1,0 +1,11 @@
+# Global Config Settings
+host github.com
+	User git
+
+host * 
+  ControlMaster auto
+	ControlPath ~/.ssh/control-%h-%p-%r
+
+{{- if $.work }}
+Include work.conf
+{{- end }}

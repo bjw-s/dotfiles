@@ -79,7 +79,7 @@ packages:
         - tree
         - vault
         - viddy
-        - vivid
+        # - vivid
         - wget
         - yq
         - ykman
@@ -92,37 +92,37 @@ packages:
 
   os:
     linux:
-      common:
-        - 1password
-        - alacritty
-        - chromium
-        - grimshot
-        - kanshi
-        - mako
-        - mopidy
-        - mopidy-youtube
-        - mopidy-mpd
-        - mpc
-        - mpdris2
-        - opensc
-        - openvpn
-        - openvpn-update-systemd-resolved
-        - python-pywal
-        - sway
-        - swayidle
-        - thunderbird
-        - waybar
-      archlinux:
-        - base-devel
-        - aur/espanso-wayland-git
-        - aur/rofi-lbonn-wayland-only-git
-        - aur/microsoft-edge-stable-bin
-        - aur/swaylock-effects-git
-        - aur/swaync-git
-        - aur/thunderbird-tbsync
-        - aur/thunderbird-eas-4-tbsync
-        - aur/thunderbird-dav-4-tbsync
-        - aur/visual-studio-code-bin
+      common: []
+        # - 1password
+        # - alacritty
+        # - chromium
+        # - grimshot
+        # - kanshi
+        # - mako
+        # - mopidy
+        # - mopidy-youtube
+        # - mopidy-mpd
+        # - mpc
+        # - mpdris2
+        # - opensc
+        # - openvpn
+        # - openvpn-update-systemd-resolved
+        # - python-pywal
+        # - sway
+        # - swayidle
+        # - thunderbird
+        # - waybar
+      archlinux: []
+        # - base-devel
+        # - aur/espanso-wayland-git
+        # - aur/rofi-lbonn-wayland-only-git
+        # - aur/microsoft-edge-stable-bin
+        # - aur/swaylock-effects-git
+        # - aur/swaync-git
+        # - aur/thunderbird-tbsync
+        # - aur/thunderbird-eas-4-tbsync
+        # - aur/thunderbird-dav-4-tbsync
+        # - aur/visual-studio-code-bin
 
   other_binaries:
     - name: talhelper

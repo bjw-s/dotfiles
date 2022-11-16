@@ -1,0 +1,42 @@
+format = """
+[╭─](white) $nix_shell$kubernetes$fill$git_branch$python$terraform$golang
+[╰─](white) $directory$character\n"""
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
+
+[directory]
+format = "[ $path]($style)[$read_only]($read_only_style) "
+read_only = " "
+truncation_length = 3
+truncation_symbol = "…/"
+style = "blue"
+
+[git_branch]
+symbol = " "
+format = "[\\[$symbol$branch\\]]($style) "
+
+[golang]
+symbol = " "
+format = "[\\[$symbol($version )\\]]($style) "
+
+[hostname]
+style = "bold green"
+
+[kubernetes]
+symbol = "ﴱ "
+format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
+style  = "bold bright-green"
+disabled = false
+
+[python]
+symbol = " "
+format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )\\]]($style) "
+
+[terraform]
+symbol = "ﳼ "
+format = "[\\[$symbol$workspace\\]]($style) "
+
+[username]
+style_user = "bold blue"

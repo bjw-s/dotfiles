@@ -1,0 +1,23 @@
+{{- if eq .chezmoi.os "linux" -}}
+# Emulate pbcopy/pbpaste
+alias pbcopy 'xclip -selection clipboard'
+alias pbpaste 'xclip -selection clipboard -o'
+{{- end }}
+
+if command -sq lsd
+  alias ls="lsd"
+  alias ll="lsd -l"
+  alias la="lsd -a"
+  alias lt="lsd --tree"
+  alias lla="lsd -la"
+end
+
+alias wget "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\""
+
+if command -sq python
+  alias pip="python -m pip"
+end
+
+if command -sq python3
+  alias pip3="python3 -m pip"
+end

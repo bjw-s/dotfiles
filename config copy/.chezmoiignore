@@ -1,0 +1,32 @@
+.github
+
+{{- if eq .chezmoi.os "darwin" }}
+.config/chromium-flags.conf
+.config/microsoft-edge-stable-flags.conf
+
+.config/alacritty
+.config/Code
+.config/kanshi
+.config/mako
+.config/rofi
+.config/sway
+.config/swaync
+.config/systemd
+.config/waybar
+.config/wofi
+.local/bin/*.sh
+.local/share/applications
+{{- else if eq .chezmoi.os "linux" }}
+Library
+{{- end }}
+
+{{- if not $.agekey }}
+Library/Application Support/sops
+{{- end }}
+
+{{- if not $.kubernetes }}
+.kube
+{{- end }}
+
+LICENSE
+README.md

@@ -1,0 +1,49 @@
+{{- $personal := false -}}{{/* true if this is a personal machine */}}
+{{- $work := false -}}{{/* true if this is a work machine */}}
+
+{{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
+{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
+
+{{- $hostname := "" -}}
+{{- if (eq .chezmoi.os "darwin") -}}
+  {{- $hostname = output "scutil" "--get" "LocalHostName" | trim -}}
+{{- else -}}
+  {{- $hostname = .chezmoi.hostname -}}
+{{- end -}}
+
+{{- if eq $hostname "delphi" -}}
+  {{- $personal = true -}}
+  {{- $work = false -}}
+  {{- $agekey = true -}}
+  {{- $kubernetes = true -}}
+{{- else if eq $hostname "gizmo" -}}
+  {{- $personal = false -}}
+  {{- $work = true -}}
+  {{- $agekey = true -}}
+  {{- $kubernetes = true -}}
+{{- end -}}
+
+{{- $osid := .chezmoi.os -}}
+{{- if and .chezmoi.osRelease (hasKey .chezmoi.osRelease "id") -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- $srcRoot := (joinPath .chezmoi.homeDir "Development/src") -}}
+
+format: yaml
+
+data:
+  personal: {{ $personal }}
+  work: {{ $work }}
+  agekey: {{ $agekey }}
+  kubernetes: {{ $kubernetes }}
+  srcroot: {{ $srcRoot }}
+  osid: {{ $osid | quote }}
+
+encryption: age
+
+{{- if $agekey }}
+age:
+  identity: {{ .chezmoi.homeDir }}/.config/age/keys.txt
+  recipient: age1uk0y2ahfavgsgqvrtg5a22w5gytpdmjuatxtcw6kntmxhlcgreesuwzw5s
+{{- end }}

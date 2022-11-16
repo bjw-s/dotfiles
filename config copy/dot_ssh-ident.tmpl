@@ -11,7 +11,7 @@ MATCH_PATH = [
 
 SSH_ADD_OPTIONS = [
   # Add ykcs11 auth for work sessions
-  [ ["work"], [], "-s /usr/lib64/libykcs11.so.2"],
+  [ ["work"], [], "-s /usr/lib/libykcs11.so"],
   # As default prevent keys remaining in memory for too long (>2h) for all
   # identities and binaries. Set SSH_ADD_OPTIONS to empty to disable this.
   [ [], [], ""],
