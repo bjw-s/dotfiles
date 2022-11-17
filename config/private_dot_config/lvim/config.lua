@@ -61,7 +61,6 @@ lvim.keys.normal_mode["<C-]>"] = ":bn<CR>"
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.bufferline.active = false
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
@@ -195,12 +194,8 @@ lvim.plugins = {
   { "christianchiarulli/nvcode-color-schemes.vim" },
   { "ntpeters/vim-better-whitespace" },
   { "GutenYe/json5.vim" },
-  { "catppuccin/nvim" }
-
-  --     {
-  --       "folke/trouble.nvim",
-  --       cmd = "TroubleToggle",
-  --     },
+  { "catppuccin/nvim" },
+  { "rcarriga/nvim-notify" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -218,3 +213,4 @@ lvim.plugins = {
 -- })
 
 vim.opt.shell = "/bin/sh"
+vim.notify = require("notify")
