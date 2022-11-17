@@ -6,16 +6,10 @@
 
 .config/alacritty
 .config/Code
-.config/kanshi
-.config/mako
-.config/rofi
-.config/sway
-.config/swaync
-.config/systemd
-.config/waybar
-.config/wofi
+.config/ulauncher
 .local/bin/*.sh
 .local/share/applications
+.themes
 {{- else if eq .chezmoi.os "linux" }}
 Library
 {{- end }}
