@@ -171,7 +171,7 @@ packages:
       type: http
       url: "https://get.helm.sh/helm-$version-$os-$arch.tar.gz"
       # renovate: datasource=github-releases depName=helm/helm
-      version: v3.10.2
+      version: v3.10.3
       format: archive
       source: "$os-$arch/helm"
 
