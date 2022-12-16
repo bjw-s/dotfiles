@@ -164,7 +164,7 @@ packages:
       type: http
       url: "https://storage.googleapis.com/kubernetes-release/release/v$version/bin/$os/$arch/kubectl"
       # renovate: datasource=github-tags depName=kubernetes/kubectl versionTemplate=^kubernetes-(?<version>.*)$
-      version: 1.25.4
+      version: 1.26.0
       format: raw
 
     - name: helm
