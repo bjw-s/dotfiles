@@ -148,7 +148,7 @@ packages:
       repository: siderolabs/talos
       asset: "talosctl-$os-$arch"
       # renovate: datasource=github-releases depName=siderolabs/talos
-      version: v1.2.7
+      version: v1.3.1
       format: raw
       source: "talosctl-$os-$arch"
 
