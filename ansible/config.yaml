@@ -10,15 +10,9 @@ packages:
         delete_versions: []
         global: 3.10.4
 
-      - name: "golang"
-        repository: "https://github.com/kennyp/asdf-golang"
-        versions:
-          - 1.19.2
-        delete_versions: []
-        global: 1.19.2
-
   brew:
-    taps: []
+    taps:
+      - utkuozdemir/pv-migrate
     casks:
       darwin:
         - 1password
@@ -46,7 +40,6 @@ packages:
         - bat
         - coreutils
         - cue
-        - curl
         - direnv
         - dog
         - findutils
@@ -68,6 +61,7 @@ packages:
         - lsd
         - pre-commit
         - prettier
+        - pv-migrate
         - shellcheck
         - sops
         - starship
@@ -84,6 +78,7 @@ packages:
         - ykman
         - zoxide
       darwin:
+        - curl
         - openssl
         - pinentry-mac
         - terminal-notifier

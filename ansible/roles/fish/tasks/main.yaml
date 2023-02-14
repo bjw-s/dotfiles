@@ -1,5 +1,6 @@
 ---
 - name: "install"
+  become: false
   community.general.homebrew:
     name:
       - 'fish'

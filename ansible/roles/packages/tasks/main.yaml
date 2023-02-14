@@ -5,11 +5,14 @@
 - name: "merge common and platform specific packages"
   ansible.builtin.set_fact:
     brew_pkgs_merged: "{{ packages.brew.packages.common | union(packages.brew.packages[ansible_system|lower] | d([])) }}"
+  tags:
+    - always
 
 - import_tasks: brew.yaml
   vars:
     pkgs: '{{ brew_pkgs_merged }}'
   tags: homebrew
+  become: false
   when:
     - ansible_system in ["Linux", "Darwin"]
 
