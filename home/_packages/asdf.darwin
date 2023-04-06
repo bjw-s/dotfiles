@@ -2,7 +2,7 @@
 chezmoi=2.33.0 #renovate: packageName=twpayne/chezmoi
 direnv=2.32.2 #renovate: packageName=direnv/direnv
 flux2=0.41.2 #renovate: packageName=fluxcd/flux2
-github-cli=2.25.1 #renovate: packageName=cli/cli
+github-cli=2.26.1 #renovate: packageName=cli/cli
 golang=1.20.3 #renovate: datasource=github-tags packageName=golang/go
 helm=3.11.2 #renovate: packageName=helm/helm
 k9s=0.27.3 #renovate: packageName=derailed/k9s
