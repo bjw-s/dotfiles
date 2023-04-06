@@ -16,7 +16,7 @@ python=3.11.2
 shellcheck=0.9.0 #renovate: packageName=koalaman/shellcheck
 shfmt=3.6.0 #renovate: packageName=mvdan/sh
 stern=1.24.0 #renovate: packageName=stern/stern
-talhelper=1.6.2 #renovate: packageName=budimanjojo/talhelper
+talhelper=1.6.3 #renovate: packageName=budimanjojo/talhelper
 talosctl=1.3.6 #renovate: packageName=siderolabs/talos
 task=3.23.0 #renovate: packageName=go-task/task
 terraform=1.4.4 #renovate: packageName=hashicorp/terraform
