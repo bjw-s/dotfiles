@@ -2,7 +2,6 @@
   "recommendations": [
     "samuelcolvin.jinjahtml",
     "bmalehorn.vscode-fish",
-    "redhat.ansible",
     "redhat.vscode-yaml"
   ]
 }

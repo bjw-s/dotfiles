@@ -1,0 +1,50 @@
+{{- $fisher_file := joinPath .chezmoi.sourceDir (print "_packages/fisher." .chezmoi.os) -}}
+#!/usr/bin/env bash
+{{- if (stat $fisher_file) }}
+# Hash asdf file {{ include $fisher_file | sha256sum }}
+
+function is_fish_installed() {
+  which fish > /dev/null
+}
+
+function run_fish_command() {
+  $(which fish) -c "$1"
+}
+
+function update_fisher_plugins() {
+  echo "Updating fisher plugins..."
+  run_fish_command "fisher update" &> /dev/null
+}
+
+function strip_comments_from_file() {
+  sed -e 's/[[:space:]]*#.*// ; /^[[:space:]]*$/d' "$1"
+}
+
+function is_fisher_plugin_installed() {
+  run_fish_command "fisher list $1" &> /dev/null
+}
+
+function install_fisher_plugin() {
+  run_fish_command "fisher install $1"
+}
+
+function process_fisher_file() {
+  while read -r fisher_plugin
+  do
+    if ! is_fisher_plugin_installed "${fisher_plugin}"; then
+      install_fisher_plugin "${fisher_plugin}"
+    fi
+  done < <(strip_comments_from_file "{{ $fisher_file }}")
+}
+
+function main() {
+  if is_fish_installed ; then
+    process_fisher_file
+    update_fisher_plugins
+  fi
+}
+
+if [ ${#BASH_SOURCE[@]} = 1 ]; then
+  main
+fi
+{{- end }}

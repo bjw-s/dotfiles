@@ -1,7 +1,0 @@
-fish:
-  plugins:
-    - franciscolourenco/done
-    - jorgebucaran/nvm.fish
-    - kidonng/zoxide.fish
-    - nickeb96/puffer-fish
-    - PatrickF1/fzf.fish
