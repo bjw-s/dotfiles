@@ -6,7 +6,7 @@ github-cli=2.28.0 #renovate: packageName=cli/cli
 golang=1.20.3 #renovate: datasource=github-tags packageName=golang/go versioning=^go(?<version>.*)$
 helm-ct=3.8.0 #renovate: packageName=helm/chart-testing
 helm=3.11.3 #renovate: packageName=helm/helm
-k9s=0.27.3 #renovate: packageName=derailed/k9s
+k9s=0.27.4 #renovate: packageName=derailed/k9s
 krew=0.4.3 #renovate: packageName=kubernetes-sigs/krew
 kubectl=1.26.3 #renovate: datasource=github-tags packageName=kubernetes/kubectl versioning=^kubernetes-(?<version>.*)$
 kustomize=5.0.1 #renovate: packageName=kubernetes-sigs/kustomize
