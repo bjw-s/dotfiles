@@ -19,7 +19,7 @@ shfmt=3.6.0 #renovate: packageName=mvdan/sh
 starship=1.14.2 #renovate: packageName=starship/starship
 stern=1.25.0 #renovate: packageName=stern/stern
 talhelper=1.7.2 #renovate: packageName=budimanjojo/talhelper
-talosctl=1.4.3 #renovate: packageName=siderolabs/talos
+talosctl=1.4.4 #renovate: packageName=siderolabs/talos
 task=3.24.0 #renovate: packageName=go-task/task
 terraform=1.4.6 #renovate: packageName=hashicorp/terraform
 tfctl=0.14.0 #renovate: packageName=weaveworks/tf-controller
