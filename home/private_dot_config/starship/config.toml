@@ -25,7 +25,7 @@ format = "[\\[$symbol($version )\\]]($style) "
 style = "bold green"
 
 [kubernetes]
-symbol = "ﴱ "
+symbol = "󱃾 "
 format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
 style  = "bold bright-green"
 disabled = false
@@ -35,7 +35,7 @@ symbol = " "
 format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )\\]]($style) "
 
 [terraform]
-symbol = "ﳼ "
+symbol = "󱁢 "
 format = "[\\[$symbol$workspace\\]]($style) "
 
 [username]
