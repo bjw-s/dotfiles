@@ -1,5 +1,5 @@
 format = """
-[╭─](white) $nix_shell$kubernetes$fill$git_branch$python$terraform$golang
+[╭─](white) $kubernetes$fill$git_branch$python$terraform$golang
 [╰─](white) $directory$character\n"""
 
 [character]
@@ -32,7 +32,7 @@ disabled = false
 
 [python]
 symbol = " "
-format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )\\]]($style) "
+format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\))\\]]($style) "
 
 [terraform]
 symbol = "󱁢 "
