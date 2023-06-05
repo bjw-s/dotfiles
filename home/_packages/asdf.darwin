@@ -1,5 +1,5 @@
 age=1.1.1 #renovate: packageName=FiloSottile/age
-chezmoi=2.33.6 #renovate: packageName=twpayne/chezmoi
+chezmoi=2.34.0 #renovate: packageName=twpayne/chezmoi
 direnv=2.32.3 #renovate: packageName=direnv/direnv
 flux2=0.41.2 #renovate: packageName=fluxcd/flux2
 github-cli=2.30.0 #renovate: packageName=cli/cli
