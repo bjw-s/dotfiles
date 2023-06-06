@@ -79,5 +79,6 @@
     "http://json.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yaml"
     ]
-  }
+  },
+  "go.toolsManagement.autoUpdate": true
 }
