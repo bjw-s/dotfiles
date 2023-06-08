@@ -11,7 +11,7 @@ krew=0.4.3 #renovate: packageName=kubernetes-sigs/krew
 kubectl=1.27.2 #renovate: datasource=github-tags packageName=kubernetes/kubectl versionTemplate=^kubernetes-(?<version>.*)$
 kustomize=5.0.1 #renovate: packageName=kubernetes-sigs/kustomize
 mc=2023-05-30T22-41-38Z #renovate: packageName=minio/mc versioning=regex:^(?<major>\d+)-(?<minor>\d+)-(?<patch>\d+)T.*Z$ versionTemplate=^(RELEASE.)?(?<version>.*)$
-nodejs=20.2.0 #renovate: packageName=nodejs/node
+nodejs=20.3.0 #renovate: packageName=nodejs/node
 pre-commit=3.3.2 #renovate: packageName=pre-commit/pre-commit
 python=3.11.2
 shellcheck=0.9.0 #renovate: packageName=koalaman/shellcheck
