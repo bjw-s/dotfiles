@@ -20,7 +20,7 @@ starship=1.15.0 #renovate: packageName=starship/starship
 stern=1.25.0 #renovate: packageName=stern/stern
 talhelper=1.7.4 #renovate: packageName=budimanjojo/talhelper
 talosctl=1.4.5 #renovate: packageName=siderolabs/talos
-task=3.25.0 #renovate: packageName=go-task/task
+task=3.26.0 #renovate: packageName=go-task/task
 terraform=1.4.6 #renovate: packageName=hashicorp/terraform
 tfctl=0.14.0 #renovate: packageName=weaveworks/tf-controller
 yamllint=1.30.0 #renovate: packageName=adrienverge/yamllint
