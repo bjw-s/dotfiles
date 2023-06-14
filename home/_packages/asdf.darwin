@@ -12,7 +12,7 @@ kubectl=1.27.2 #renovate: datasource=github-tags packageName=kubernetes/kubectl 
 kustomize=5.0.1 #renovate: packageName=kubernetes-sigs/kustomize
 mc=2023-06-06T13-48-56Z #renovate: packageName=minio/mc versioning=regex:^(?<major>\d+)-(?<minor>\d+)-(?<patch>\d+)T.*Z$ versionTemplate=^(RELEASE.)?(?<version>.*)$
 nodejs=20.3.0 #renovate: packageName=nodejs/node
-pre-commit=3.3.2 #renovate: packageName=pre-commit/pre-commit
+pre-commit=3.3.3 #renovate: packageName=pre-commit/pre-commit
 python=3.11.2
 shellcheck=0.9.0 #renovate: packageName=koalaman/shellcheck
 shfmt=3.6.0 #renovate: packageName=mvdan/sh
