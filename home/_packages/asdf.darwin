@@ -15,7 +15,7 @@ nodejs=20.3.0 #renovate: packageName=nodejs/node
 pre-commit=3.3.3 #renovate: packageName=pre-commit/pre-commit
 python=3.11.2
 shellcheck=0.9.0 #renovate: packageName=koalaman/shellcheck
-shfmt=3.6.0 #renovate: packageName=mvdan/sh
+shfmt=3.7.0 #renovate: packageName=mvdan/sh
 starship=1.15.0 #renovate: packageName=starship/starship
 stern=1.25.0 #renovate: packageName=stern/stern
 talhelper=1.7.4 #renovate: packageName=budimanjojo/talhelper
