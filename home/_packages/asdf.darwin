@@ -10,7 +10,7 @@ k9s=0.27.4 #renovate: packageName=derailed/k9s
 krew=0.4.3 #renovate: packageName=kubernetes-sigs/krew
 kubectl=1.27.3 #renovate: datasource=github-tags packageName=kubernetes/kubectl versionTemplate=^kubernetes-(?<version>.*)$
 kustomize=5.0.1 #renovate: packageName=kubernetes-sigs/kustomize
-mc=2023-06-23T18-12-07Z #renovate: packageName=minio/mc versioning=regex:^(?<major>\d+)-(?<minor>\d+)-(?<patch>\d+)T.*Z$ versionTemplate=^(RELEASE.)?(?<version>.*)$
+mc=2023-06-28T21-54-17Z #renovate: packageName=minio/mc versioning=regex:^(?<major>\d+)-(?<minor>\d+)-(?<patch>\d+)T.*Z$ versionTemplate=^(RELEASE.)?(?<version>.*)$
 nodejs=20.3.1 #renovate: packageName=nodejs/node
 pre-commit=3.3.3 #renovate: packageName=pre-commit/pre-commit
 python=3.11.2
