@@ -4,7 +4,7 @@ direnv=2.32.3 #renovate: packageName=direnv/direnv
 flux2=2.0.0 #renovate: packageName=fluxcd/flux2
 github-cli=2.31.0 #renovate: packageName=cli/cli
 golang=1.20.5 #renovate: datasource=github-tags packageName=golang/go versionTemplate=^go(?<version>.*)$
-helm-ct=3.8.0 #renovate: packageName=helm/chart-testing
+helm-ct=3.9.0 #renovate: packageName=helm/chart-testing
 helm=3.12.1 #renovate: packageName=helm/helm
 k9s=0.27.4 #renovate: packageName=derailed/k9s
 krew=0.4.3 #renovate: packageName=kubernetes-sigs/krew
