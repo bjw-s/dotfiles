@@ -5,7 +5,7 @@ flux2=2.0.0 #renovate: packageName=fluxcd/flux2
 github-cli=2.31.0 #renovate: packageName=cli/cli
 golang=1.20.6 #renovate: datasource=github-tags packageName=golang/go versionTemplate=^go(?<version>.*)$
 helm-ct=3.9.0 #renovate: packageName=helm/chart-testing
-helm=3.12.1 #renovate: packageName=helm/helm
+helm=3.12.2 #renovate: packageName=helm/helm
 k9s=0.27.4 #renovate: packageName=derailed/k9s
 krew=0.4.4 #renovate: packageName=kubernetes-sigs/krew
 kubectl=1.27.3 #renovate: datasource=github-tags packageName=kubernetes/kubectl versionTemplate=^kubernetes-(?<version>.*)$
