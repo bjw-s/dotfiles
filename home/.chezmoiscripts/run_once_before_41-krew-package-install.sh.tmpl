@@ -42,7 +42,7 @@ function install_krew_index() {
 
 function install_krew_plugin() {
   echo "Installing krew plugin $1"
-  run_krew_command "install $1"
+  run_krew_command "install" "$1"
 }
 
 function process_krew_index_file() {
