@@ -18,7 +18,7 @@ shellcheck=0.9.0 #renovate: packageName=koalaman/shellcheck
 shfmt=3.7.0 #renovate: packageName=mvdan/sh
 starship=1.15.0 #renovate: packageName=starship/starship
 stern=1.25.0 #renovate: packageName=stern/stern
-talhelper=1.8.0 #renovate: packageName=budimanjojo/talhelper
+talhelper=1.8.1 #renovate: packageName=budimanjojo/talhelper
 talosctl=1.4.7 #renovate: packageName=siderolabs/talos
 task=3.28.0 #renovate: packageName=go-task/task
 terraform=1.5.4 #renovate: packageName=hashicorp/terraform
