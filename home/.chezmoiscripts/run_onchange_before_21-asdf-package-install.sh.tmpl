@@ -1,0 +1,77 @@
+{{- $plugins := list
+  "age"
+  "chezmoi"
+  "direnv"
+  "flux2"
+  "github-cli"
+  "golang"
+  "helm-ct"
+  "helm"
+  "k9s"
+  "krew"
+  "kubectl"
+  "kustomize"
+  "mc"
+  "nodejs"
+  "pre-commit"
+  "python"
+  "shellcheck"
+  "shfmt"
+  "starship"
+  "stern"
+  "talhelper"
+  "talosctl"
+  "task"
+  "terraform"
+  "tfctl"
+  "yamllint"
+-}}
+
+{{- $pluginsWithVersions := list -}}
+{{- range $plugins -}}
+  {{- $pluginVersion := "latest" -}}
+  {{- if hasKey $.asdf_versions . -}}
+    {{- $pluginVersion = get $.asdf_versions . -}}
+  {{- end -}}
+  {{- $pluginsWithVersions = append $pluginsWithVersions (dict "name" . "version" $pluginVersion) -}}
+{{- end -}}
+
+#!/usr/bin/env bash
+function update_asdf_plugins() {
+  echo "Updating asdf plugins..."
+  asdf plugin update --all &> /dev/null
+}
+
+function is_asdf_plugin_installed() {
+  test "$(asdf plugin list | grep "${1}")"
+}
+
+function is_asdf_plugin_version_installed() {
+  test "$(asdf list "${1}" | grep "${2}")"
+}
+
+function install_asdf_plugins() {
+  {{- range $pluginsWithVersions }}
+  echo "Installing asdf plugin {{ .name }}..."
+  if ! is_asdf_plugin_installed "{{ .name }}"; then
+    asdf plugin add "{{ .name }}"
+  fi
+  asdf_version="{{ .version }}"
+  if [[ "${asdf_version}" == "latest" ]]; then
+    asdf_version=$(asdf latest "{{ .name }}")
+  fi
+  if ! is_asdf_plugin_version_installed "{{ .name }}" "${asdf_version}"; then
+    asdf install "{{ .name }}" "${asdf_version}"
+  fi
+  asdf global "{{ .name }}" "${asdf_version}"
+  {{ end }}
+}
+
+function main() {
+  update_asdf_plugins
+  install_asdf_plugins
+}
+
+if [[ ${#BASH_SOURCE[@]} = 1 ]]; then
+  main
+fi

@@ -1,8 +1,0 @@
-brew "curl"
-brew "ffmpeg"
-brew "fzf"
-brew "git"
-
-cask "calibre"
-cask "font-fira-code-nerd-font"
-cask "rocket"

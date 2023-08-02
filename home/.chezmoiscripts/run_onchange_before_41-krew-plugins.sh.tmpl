@@ -1,0 +1,73 @@
+{{ $indices := dict
+  "netshoot" "https://github.com/nilic/kubectl-netshoot.git"
+-}}
+
+{{ $plugins := list
+  "df-pv"
+  "kc"
+  "netshoot/netshoot"
+  "pv-migrate"
+  "rook-ceph"
+  "view-secret"
+-}}
+
+#!/usr/bin/env bash
+function is_krew_installed() {
+  command -v krew > /dev/null
+}
+
+function run_krew_command() {
+  $(command -v krew) "$@"
+}
+
+function update_krew_plugins() {
+  echo "Updating krew plugins..."
+  run_krew_command "update" &> /dev/null
+  run_krew_command "upgrade" &> /dev/null
+}
+
+function is_krew_index_installed() {
+  run_krew_command "index" "list" | grep "$1" &> /dev/null
+}
+
+function is_krew_plugin_installed() {
+  run_krew_command "list" | grep "$1" &> /dev/null
+}
+
+function install_krew_index() {
+  echo "Installing krew index $1 ($2)"
+  run_krew_command "index" "add" "$1" "$2" &> /dev/null
+}
+
+function install_krew_plugin() {
+  echo "Installing krew plugin $1"
+  run_krew_command "install" "$1"
+}
+
+function install_krew_indices() {
+  {{- range $index, $url := $indices }}
+  if ! is_krew_index_installed "{{ $url }}"; then
+    install_krew_index "{{ $index }}" "{{ $url }}"
+  fi
+  {{- end }}
+}
+
+function install_krew_plugins() {
+  {{- range $plugin := $plugins }}
+  if ! is_krew_plugin_installed "{{ $plugin }}"; then
+    install_krew_plugin "{{ $plugin }}"
+  fi
+  {{- end }}
+}
+
+function main() {
+  if is_krew_installed ; then
+    install_krew_indices
+    install_krew_plugins
+    update_krew_plugins
+  fi
+}
+
+if [[ ${#BASH_SOURCE[@]} = 1 ]]; then
+  main
+fi

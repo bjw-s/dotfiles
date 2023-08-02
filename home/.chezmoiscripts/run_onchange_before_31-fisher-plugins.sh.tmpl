@@ -1,0 +1,48 @@
+{{ $plugins := list
+  "jorgebucaran/fisher"
+  "kidonng/zoxide.fish"
+  "patrickf1/fzf.fish"
+  "nickeb96/puffer-fish"
+  "franciscolourenco/done"
+-}}
+
+#!/usr/bin/env bash
+function is_fish_installed() {
+  command -v fish > /dev/null
+}
+
+function run_fish_command() {
+  $(command -v fish) -c "$1"
+}
+
+function update_fisher_plugins() {
+  echo "Updating fisher plugins..."
+  run_fish_command "fisher update" &> /dev/null
+}
+
+function is_fisher_plugin_installed() {
+  run_fish_command "fisher list $1" &> /dev/null
+}
+
+function install_fisher_plugin() {
+  run_fish_command "fisher install $1"
+}
+
+function install_fisher_plugins() {
+  {{- range $plugin := $plugins }}
+  if ! is_fisher_plugin_installed "{{ $plugin }}"; then
+    install_fisher_plugin "{{ $plugin }}"
+  fi
+  {{- end }}
+}
+
+function main() {
+  if is_fish_installed ; then
+    install_fisher_plugins
+    update_fisher_plugins
+  fi
+}
+
+if [[ ${#BASH_SOURCE[@]} = 1 ]]; then
+  main
+fi

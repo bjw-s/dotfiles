@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+{{ $brews := list
+  "coreutils"
+  "curl"
+  "ffmpeg"
+  "fzf"
+  "git"
+-}}
+
+{{ $casks := list
+  "calibre"
+  "font-fira-code-nerd-font"
+  "rocket"
+-}}
+
+function main() {
+  brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+}
+
+if [[ ${#BASH_SOURCE[@]} = 1 ]]; then
+  main
+fi

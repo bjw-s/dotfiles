@@ -7,18 +7,4 @@
   platform: "github",
   username: "bjw-s-bot[bot]",
   gitAuthor: "bjw-s-bot <87358111+bjw-s-bot[bot]@users.noreply.github.com>",
-  repositories: ["bjw-s/dotfiles"],
-  regexManagers: [
-    {
-      description: ["asdf package regex manager"],
-      fileMatch: ["home\\/_packages\\/asdf\\.(?:darwin|linux)$"],
-      matchStrings: [
-        "(?<depName>\\S+)=(?<currentValue>[^\\s]*?) #renovate:( datasource=(?<datasource>.*?))?( packageName=(?<packageName>.*?=?))?( versioning=(?<versioning>.*?=?))?( versionTemplate=(?<versionTemplate>.*?=?))?\\n",
-      ],
-      packageNameTemplate: "{{#if packageName}}{{{packageName}}}{{else}}{{/if}}",
-      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-      extractVersionTemplate: "{{#if versionTemplate}}{{{versionTemplate}}}{{else}}^v?(?<version>.*)${{/if}}",
-    },
-  ],
 }
