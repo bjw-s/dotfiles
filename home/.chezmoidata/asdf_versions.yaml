@@ -1,5 +1,5 @@
 # renovate: depName=FiloSottile/age
-age: "1.1.0"
+age: "1.1.1"
 
 nested:
   # renovate: depName=twpayne/chezmoi
