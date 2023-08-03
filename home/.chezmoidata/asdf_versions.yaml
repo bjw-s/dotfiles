@@ -21,7 +21,7 @@ asdf_versions:
   stern: "1.25.0"
 
   # renovate: datasource=github-releases depName=budimanjojo/talhelper
-  talhelper: "1.8.0"
+  talhelper: "1.9.0"
   talosctl: "1.4.7"
   task: "3.28.0"
   terraform: "1.5.4"
