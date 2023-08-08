@@ -4,7 +4,7 @@ asdf_versions:
   direnv: "2.32.3" # renovate: depName=direnv/direnv
   flux2: "2.0.1" # renovate: depName=fluxcd/flux2
   github-cli: "2.32.1" # renovate: depName=cli/cli
-  golang: "1.20.7" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
+  golang: "1.21.0" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
   helm-ct: "3.9.0" # renovate: depName=helm/chart-testing
   helm: "3.12.2" # renovate: depName=helm/helm
   k9s: "0.27.4" # renovate: depName=derailed/k9s
