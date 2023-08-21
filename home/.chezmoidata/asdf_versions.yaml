@@ -18,7 +18,7 @@ asdf_versions:
   shellcheck: "0.9.0" # renovate: depName=koalaman/shellcheck
   shfmt: "3.7.0" # renovate: depName=mvdan/sh
   starship: "1.16.0" # renovate: depName=starship/starship
-  stern: "1.25.0" # renovate: depName=stern/stern
+  stern: "1.26.0" # renovate: depName=stern/stern
   talhelper: "1.9.1" # renovate: depName=budimanjojo/talhelper
   talosctl: "1.4.8" # renovate: depName=siderolabs/talos
   task: "3.28.0" # renovate: depName=go-task/task
