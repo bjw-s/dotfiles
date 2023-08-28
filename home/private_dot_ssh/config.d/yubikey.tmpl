@@ -1,0 +1,8 @@
+{{- if .work -}}
+Host *
+  PKCS11Provider /usr/local/lib/libykcs11.dylib
+
+  ControlMaster auto
+  ControlPath ~/.ssh/control-%h-%p-%r
+  ControlPersist 600
+{{- end }}

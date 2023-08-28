@@ -3,16 +3,46 @@
 {{ $brews := list
   "coreutils"
   "curl"
-  "ffmpeg"
   "fzf"
   "git"
+  "jq"
+  "yubico-piv-tool"
+  "zoxide"
 -}}
 
 {{ $casks := list
-  "calibre"
+  "1password-cli"
+  "bartender"
   "font-fira-code-nerd-font"
+  "keyboard-maestro"
+  "linearmouse"
+  "orbstack"
   "rocket"
+  "shottr"
+  "yubico-yubikey-manager"
 -}}
+
+{{- if .personal -}}
+  {{ $brews = concat $brews (list
+    "ffmpeg"
+  )
+  -}}
+  {{ $casks = concat $casks (list
+    "calibre"
+  )
+  -}}
+{{- end -}}
+
+{{- if .work -}}
+  {{ $brews = concat $brews (list
+    "openvpn"
+  )
+  -}}
+  {{ $casks = concat $casks (list
+    "viscosity"
+  )
+  -}}
+{{- end -}}
 
 function main() {
   brew bundle --no-lock --file=/dev/stdin <<EOF
