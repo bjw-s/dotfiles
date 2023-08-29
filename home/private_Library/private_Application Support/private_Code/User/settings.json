@@ -27,7 +27,7 @@
   "window.restoreWindows": "none",
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "Catppuccin Macchiato",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.renderIndentGuides": "none",
@@ -39,16 +39,6 @@
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
   },
-
-  /*+--- Color Theme ---+*/
-  "material-icon-theme.activeIconPack": "react",
-  "material-icon-theme.folders.associations": {
-    ".taskfiles": "utils"
-  },
-  "material-icon-theme.folders.color": "#616e88",
-  "material-icon-theme.folders.theme": "classic",
-  "material-icon-theme.hidesExplorerArrows": false,
-  "material-icon-theme.saturation": 0.6,
 
   /*+--- Extensions ---+*/
   "[javascript]": {

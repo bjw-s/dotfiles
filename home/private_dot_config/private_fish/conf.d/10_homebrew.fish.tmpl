@@ -31,3 +31,7 @@ end
 set -gx LDFLAGS "-L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/openssl@3/lib"
 set -gx CPPFLAGS "-I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/opt/openssl@3/include"
 {{- end }}
+
+if test -f "/opt/homebrew/etc/openssl/cert.pem"
+  set -gx CURL_CA_BUNDLE "/opt/homebrew/etc/openssl/cert.pem"
+end

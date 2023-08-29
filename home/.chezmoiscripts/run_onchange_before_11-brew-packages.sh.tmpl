@@ -6,6 +6,7 @@
   "fzf"
   "git"
   "jq"
+  "openssl-osx-ca"
   "yubico-piv-tool"
   "zoxide"
 -}}
@@ -36,9 +37,11 @@
 {{- if .work -}}
   {{ $brews = concat $brews (list
     "openvpn"
+    "svn"
   )
   -}}
   {{ $casks = concat $casks (list
+    "google-cloud-sdk"
     "viscosity"
   )
   -}}
