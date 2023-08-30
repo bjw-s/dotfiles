@@ -1,0 +1,28 @@
+{{- if .work -}}
+function sslmatch --argument-names privatekey certificate
+    if test -z "$privatekey" || test -z "$certificate"
+        echo "USAGE: sslmatch privatekey certificate"
+        echo "privatekey is a PEM encoded file"
+				echo "certificate is a PEM encoded file"
+        return 1
+    end
+
+    if ! openssl pkey -in {$privatekey} -noout 2>/dev/null
+			echo "$privatekey is not a private key file"
+			return 1
+		end
+		set key_pubkey (openssl pkey -in {$privatekey} -pubout | openssl md5 -binary | xxd -p)
+    if ! openssl x509 -in {$certificate} -noout 2>/dev/null
+        echo "$certificate is not a certificate file"
+        return 1
+    end
+		set cert_pubkey (openssl x509 -in {$certificate} -noout -pubkey | openssl md5 -binary | xxd -p)
+
+		if [ {$key_pubkey} = {$cert_pubkey} ]
+			echo "[OK] Certificate $certificate matches key $privatekey"
+		else
+			echo "[Error] Certificate $certificate does not match key $privatekey!"
+			return 1
+		end
+end
+{{- end }}
