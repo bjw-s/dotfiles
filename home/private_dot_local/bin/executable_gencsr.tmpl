@@ -7,9 +7,11 @@ ST=Manchester
 C=GB
 
 # basic checks and strings =====================================================
+SCRIPT_NAME=$(basename $0)
+
 if [[ -z "$1" ]]; then
-    echo "usage: $0 name1 optionalname optionalname ..."
-    echo "example: gencsr.sh www.mydomain.com web w3 exch mail"
+    echo "usage: ${SCRIPT_NAME} CN [SAN1 SAN2 ...]"
+    echo "example: ${SCRIPT_NAME} www.mydomain.com web w3 exch mail"
     exit 1
 else
     CN=$1
