@@ -23,6 +23,7 @@
   "git.confirmSync": false,
   "terminal.integrated.detectLocale": "off",
   "update.showReleaseNotes": false,
+  "window.commandCenter": false,
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "none",
   "window.titleBarStyle": "custom",
@@ -34,7 +35,8 @@
 
   /*+--- Language settings ---+*/
   "[go]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
+    "toolsManagement.autoUpdate": true
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
@@ -69,6 +71,5 @@
     "http://json.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yaml"
     ]
-  },
-  "go.toolsManagement.autoUpdate": true
+  }
 }
