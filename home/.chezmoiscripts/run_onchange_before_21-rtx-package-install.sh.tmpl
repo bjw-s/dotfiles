@@ -39,36 +39,36 @@
 #!/usr/bin/env bash
 function update_asdf_plugins() {
   echo "Updating asdf plugins..."
-  asdf plugin update --all &> /dev/null
+  rtx plugin update --all &> /dev/null
 }
 
 function is_asdf_plugin_installed() {
-  test "$(asdf plugin list | grep "${1}")"
+  test "$(rtx plugin list | grep "${1}")"
 }
 
 function is_asdf_plugin_version_installed() {
-  test "$(asdf list "${1}" | grep "${2}")"
+  test "$(rtx list -p "${1}" | grep "${2}")"
 }
 
 function install_asdf_plugins() {
   {{- range $pluginsWithVersions }}
   echo "Installing asdf plugin {{ .name }}..."
   if ! is_asdf_plugin_installed "{{ .name }}"; then
-    asdf plugin add "{{ .name }}"
+    rtx plugin add "{{ .name }}" > /dev/null 2>&1
   fi
   asdf_version="{{ .version }}"
   if [[ "${asdf_version}" == "latest" ]]; then
-    asdf_version=$(asdf latest "{{ .name }}")
+    asdf_version=$(rtx latest "{{ .name }}")
   fi
   if ! is_asdf_plugin_version_installed "{{ .name }}" "${asdf_version}"; then
-    asdf install "{{ .name }}" "${asdf_version}"
+    rtx install "{{ .name }}@${asdf_version}"
   fi
-  asdf global "{{ .name }}" "${asdf_version}"
+  rtx global "{{ .name }}@${asdf_version}" 1> /dev/null
   {{ end }}
 }
 
 function main() {
-  update_asdf_plugins
+  # update_asdf_plugins
   install_asdf_plugins
 }
 

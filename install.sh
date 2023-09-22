@@ -6,18 +6,18 @@ function is_brew_installed() {
   command -v brew > /dev/null
 }
 
-function is_asdf_installed() {
-  command -v asdf > /dev/null
+function is_rtx_installed() {
+  command -v rtx > /dev/null
 }
 
 function is_chezmoi_installed() {
   command -v chezmoi > /dev/null
 }
 
-function install_asdf_plugin() {
-  asdf plugin add "$1"
-  asdf install "$1" latest
-  asdf global "$1" latest
+function install_rtx_plugin() {
+  rtx plugin add "$1"
+  rtx install "${1}@latest"
+  rtx global "${1}@latest"
 }
 
 function apply_dotfiles() {
@@ -33,14 +33,14 @@ function main() {
     exit 1
   fi
 
-  if ! is_asdf_installed ; then
-    echo "Error! asdf is not installed"
-    echo "Visit https://asdf-vm.com/guide/getting-started.html to get started"
+  if ! is_rtx_installed ; then
+    echo "Error! rtx is not installed"
+    echo "Visit https://github.com/jdx/rtx#installation to get started"
     exit 1
   fi
 
   if ! is_chezmoi_installed ; then
-    install_asdf_plugin "chezmoi"
+    install_rtx_plugin "chezmoi"
   fi
   apply_dotfiles
 }
