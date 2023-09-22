@@ -59,9 +59,6 @@
   "sops.beta": false,
   "todo-tree.highlights.useColourScheme": true,
   "todo-tree.tree.expanded": true,
-  "vs-kubernetes": {
-    "vs-kubernetes.crd-code-completion": "enabled"
-  },
   "yaml.format.enable": true,
   "yaml.schemas": {
     "https://json.schemastore.org/taskfile.json": [
@@ -71,5 +68,18 @@
     "http://json.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yaml"
     ]
-  }
+  },
+  "linter.linters": {
+    "yamllint": {
+      "configFiles": [
+        ".yamllint.yml",
+        ".yamllint.yaml",
+        ".yamllint",
+        ".ci/yamllint/.yamllint.yaml"
+      ]
+    }
+  },
+  "qalc.output.displayCommas": false,
+  "qalc.output.precision": 0,
+  "qalc.output.notation": "auto"
 }
