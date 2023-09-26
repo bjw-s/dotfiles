@@ -34,4 +34,6 @@ set -gx CPPFLAGS "-I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/opt/openssl@3/in
 
 if test -f "/opt/homebrew/etc/openssl/cert.pem"
   set -gx CURL_CA_BUNDLE "/opt/homebrew/etc/openssl/cert.pem"
+  set -gx SSL_CERT_FILE "/opt/homebrew/etc/openssl/cert.pem"
+  set -gx REQUESTS_CA_BUNDLE "/opt/homebrew/etc/openssl/cert.pem"
 end
