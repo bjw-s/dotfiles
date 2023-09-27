@@ -1,0 +1,56 @@
+{{ $extensions := list
+  "Catppuccin.catppuccin-vsc-icons"
+  "Catppuccin.catppuccin-vsc"
+  "fnando.linter"
+  "Gruntfuggly.todo-tree"
+  "ionutvmi.path-autocomplete"
+  "luisfontes19.vscode-swissknife"
+  "tomoki1207.selectline-statusbar"
+  "Tyriar.sort-lines"
+-}}
+
+#!/usr/bin/env bash
+tempdir="$(mktemp -d)"
+
+function cleanup {
+  rm -rf "$tempdir"
+}
+
+trap cleanup EXIT
+trap cleanup SIGINT
+
+function is_vscode_installed() {
+  command -v code > /dev/null
+}
+
+function get_installed_vscode_extensions() {
+  code --list-extensions > "${tempdir}/extensions"
+}
+
+function is_vscode_extension_installed() {
+  grep -q "${1}" "${tempdir}/extensions"
+}
+
+function install_vscode_extension() {
+  echo "Installing VSCode extension ${1}"
+  code --install-extension "${1}" &> /dev/null
+}
+
+function install_vscode_extensions() {
+  {{- range $extension := $extensions }}
+  if ! is_vscode_extension_installed "{{ $extension }}"; then
+    install_vscode_extension "{{ $extension }}"
+  fi
+  {{- end }}
+}
+
+function main() {
+  if is_vscode_installed ; then
+    get_installed_vscode_extensions
+    install_vscode_extensions
+  fi
+}
+
+if [[ ${#BASH_SOURCE[@]} = 1 ]]; then
+  main
+fi
