@@ -21,6 +21,6 @@ asdf_versions:
   talhelper: "1.13.0" # renovate: depName=budimanjojo/talhelper
   talosctl: "1.5.3" # renovate: depName=siderolabs/talos
   task: "3.30.1" # renovate: depName=go-task/task
-  terraform: "1.5.7" # renovate: depName=hashicorp/terraform
+  terraform: "1.6.0" # renovate: depName=hashicorp/terraform
   tfctl: "0.14.0" # renovate: depName=weaveworks/tf-controller
   yamllint: "1.30.0" # renovate: depName=adrienverge/yamllint
