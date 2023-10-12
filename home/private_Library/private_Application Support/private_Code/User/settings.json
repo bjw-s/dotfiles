@@ -55,20 +55,6 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "redhat.telemetry.enabled": false,
-  "sops.beta": false,
-  "todo-tree.highlights.useColourScheme": true,
-  "todo-tree.tree.expanded": true,
-  "yaml.format.enable": true,
-  "yaml.schemas": {
-    "https://json.schemastore.org/taskfile.json": [
-      "Taskfile.yaml",
-      ".taskfiles/*.yaml"
-    ],
-    "http://json.schemastore.org/github-workflow.json": [
-      ".github/workflows/*.yaml"
-    ]
-  },
   "linter.linters": {
     "yamllint": {
       "configFiles": [
@@ -79,8 +65,25 @@
       ]
     }
   },
+  "path-autocomplete.triggerOutsideStrings": true,
   "qalc.output.displayCommas": false,
   "qalc.output.precision": 0,
   "qalc.output.notation": "auto",
-  "path-autocomplete.triggerOutsideStrings": true
+  "redhat.telemetry.enabled": false,
+  "sops.beta": false,
+  "todo-tree.highlights.useColourScheme": true,
+  "todo-tree.tree.expanded": true,
+  "vs-kubernetes": {
+    "vs-kubernetes.crd-code-completion": "disabled"
+  },
+  "yaml.format.enable": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/taskfile.json": [
+      "Taskfile.yaml",
+      ".taskfiles/*.yaml"
+    ],
+    "http://json.schemastore.org/github-workflow.json": [
+      ".github/workflows/*.yaml"
+    ]
+  }
 }
