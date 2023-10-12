@@ -81,5 +81,6 @@
   },
   "qalc.output.displayCommas": false,
   "qalc.output.precision": 0,
-  "qalc.output.notation": "auto"
+  "qalc.output.notation": "auto",
+  "path-autocomplete.triggerOutsideStrings": true
 }
