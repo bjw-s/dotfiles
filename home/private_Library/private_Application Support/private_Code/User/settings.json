@@ -55,6 +55,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "ansible.python.interpreterPath": ".venv/bin/python",
   "linter.linters": {
     "yamllint": {
       "configFiles": [
