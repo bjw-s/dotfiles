@@ -1,42 +1,82 @@
-format = """
-[╭─](white) $kubernetes$fill$git_branch$python$terraform$golang
-[╰─](white) $directory$character\n"""
+palette = "catppuccin_macchiato"
 
-[character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[✖](bold red)"
+format = """\
+[\uE0B6](fg:blue bg:background)$time\
+[\uE0B0](fg:blue bg:green)$kubernetes\
+[\uE0B0](fg:green bg:yellow)$git_branch\
+[\uE0B0](fg:yellow bg:flamingo)$python$terraform$golang\
+[\uE0B0](fg:flamingo bg:background)
+$directory\
+$character
+"""
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:blue"
+format = '[[ 󱑍 $time ](bg:blue fg:surface0)]($style)'
 
 [directory]
-format = "[ $path]($style)[$read_only]($read_only_style) "
-read_only = " "
-truncation_length = 3
+format = "[   $path]($style)"
+style = "fg:lavender"
+truncation_length = 4
 truncation_symbol = "…/"
-style = "blue"
 
 [git_branch]
-symbol = " "
-format = "[\\[$symbol$branch\\]]($style) "
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = " bg:yellow fg:#1C3A5E"
 
-[golang]
-symbol = " "
-format = "[\\[$symbol($version )\\]]($style) "
-
-[hostname]
-style = "bold green"
+[character]
+success_symbol = '[ >](bold green)'
+error_symbol = '[ ✗](#E84D44)'
 
 [kubernetes]
 symbol = "󱃾 "
-format = "[\\[$symbol$context \\($namespace\\)\\]]($style) "
-style  = "bold bright-green"
+format = "[ $symbol$context \\($namespace\\) ]($style)"
+style  = "bg:green fg:surface1"
 disabled = false
 
 [python]
 symbol = " "
-format = "[\\[$symbol$pyenv_prefix($version )(\\($virtualenv\\))\\]]($style) "
+format = "[ $symbol$pyenv_prefix($version )(\\($virtualenv\\)) ]($style)"
+style  = "bg:flamingo fg:surface0"
+
+[golang]
+symbol = " "
+format = "[ $symbol($version) ]($style)"
+style = " bg:flamingo fg:surface0"
 
 [terraform]
 symbol = "󱁢 "
-format = "[\\[$symbol$workspace\\]]($style) "
+format = "[ $symbol$version ]($style)"
+style = "bg:flamingo fg:surface0"
 
-[username]
-style_user = "bold blue"
+[palettes.catppuccin_macchiato]
+background = "#24273a"
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
