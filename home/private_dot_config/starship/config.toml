@@ -1,56 +1,75 @@
 palette = "catppuccin_macchiato"
 
 format = """\
-[\uE0B6](fg:blue bg:background)$time\
-[\uE0B0](fg:blue bg:green)$kubernetes\
-[\uE0B0](fg:green bg:yellow)$git_branch\
-[\uE0B0](fg:yellow bg:flamingo)$python$terraform$golang\
-[\uE0B0](fg:flamingo bg:background)
-$directory\
-$character
+$os$shell$time$username($hostname)($kubernetes)($git_branch)($python)($terraform)($golang)
+$directory$character
 """
+
+[os]
+disabled = false
+symbols.Ubuntu = ""
+symbols.Windows = ""
+symbols.Macos = ""
+symbols.Debian = "\uf306"
+symbols.NixOS = ""
+style  = "bg:blue fg:background"
+format = "[ $symbol ]($style)"
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:blue"
-format = '[[ 󱑍 $time ](bg:blue fg:surface0)]($style)'
+style = "bg:blue fg:background bold"
+format = "[ 󱑍 $time [](fg:blue bg:peach)]($style)"
 
-[directory]
-format = "[   $path]($style)"
-style = "fg:lavender"
-truncation_length = 4
-truncation_symbol = "…/"
+[username]
+disabled = false
+show_always = true
+style_user = "bg:peach fg:background bold"
+style_root = "bg:peach fg:background bold"
+format = "[ $user [](fg:peach bg:background)]($style)"
+
+[hostname]
+disabled = false
+ssh_only = true
+ssh_symbol = "🌐"
+style = "bg:maroon fg:background bold"
+format = "[ $ssh_symbol $hostname [](fg:maroon bg:background)]($style)"
 
 [git_branch]
-format = '[ $symbol$branch(:$remote_branch) ]($style)'
 symbol = "  "
-style = " bg:yellow fg:#1C3A5E"
+style = " bg:yellow fg:background"
+format = "[ $symbol$branch(:$remote_branch) [](fg:yellow bg:background)]($style)"
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+style  = "bg:green fg:background"
+format = "[ $symbol$context \\($namespace\\) [](fg:green bg:background)]($style)"
+
+[python]
+symbol = " "
+style  = "bg:flamingo fg:background"
+format = "[ $symbol$pyenv_prefix($version )(\\($virtualenv\\)) [](fg:flamingo bg:background)]($style)"
+
+[golang]
+symbol = " "
+style  = "bg:flamingo fg:background"
+format = "[ $symbol($version) [](fg:flamingo bg:background)]($style)"
+
+[terraform]
+symbol = "󱁢 "
+style  = "bg:flamingo fg:background"
+format = "[ $symbol$version [](fg:flamingo bg:background)]($style)"
+
+[directory]
+truncation_length = 4
+truncation_symbol = "…/"
+style = "fg:lavender"
+format = "[  $path]($style)"
 
 [character]
 success_symbol = '[ >](bold green)'
 error_symbol = '[ ✗](#E84D44)'
-
-[kubernetes]
-symbol = "󱃾 "
-format = "[ $symbol$context \\($namespace\\) ]($style)"
-style  = "bg:green fg:surface1"
-disabled = false
-
-[python]
-symbol = " "
-format = "[ $symbol$pyenv_prefix($version )(\\($virtualenv\\)) ]($style)"
-style  = "bg:flamingo fg:surface0"
-
-[golang]
-symbol = " "
-format = "[ $symbol($version) ]($style)"
-style = " bg:flamingo fg:surface0"
-
-[terraform]
-symbol = "󱁢 "
-format = "[ $symbol$version ]($style)"
-style = "bg:flamingo fg:surface0"
 
 [palettes.catppuccin_macchiato]
 background = "#24273a"
