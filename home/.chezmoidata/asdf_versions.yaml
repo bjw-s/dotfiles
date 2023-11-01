@@ -4,7 +4,7 @@ asdf_versions:
   flux2: "2.1.2" # renovate: depName=fluxcd/flux2
   github-cli: "2.37.0" # renovate: depName=cli/cli
   golang: "1.21.3" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
-  helm-ct: "3.9.0" # renovate: depName=helm/chart-testing
+  helm-ct: "3.10.0" # renovate: depName=helm/chart-testing
   helm: "3.13.1" # renovate: depName=helm/helm
   k9s: "0.27.4" # renovate: depName=derailed/k9s
   krew: "0.4.4" # renovate: depName=kubernetes-sigs/krew
