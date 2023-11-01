@@ -1,6 +1,6 @@
 asdf_versions:
   age: "1.1.1" # renovate: depName=FiloSottile/age
-  chezmoi: "2.40.3" # renovate: depName=twpayne/chezmoi
+  chezmoi: "2.40.4" # renovate: depName=twpayne/chezmoi
   flux2: "2.1.2" # renovate: depName=fluxcd/flux2
   github-cli: "2.37.0" # renovate: depName=cli/cli
   golang: "1.21.3" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
