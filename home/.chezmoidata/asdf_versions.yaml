@@ -5,7 +5,7 @@ asdf_versions:
   github-cli: "2.38.0" # renovate: depName=cli/cli
   golang: "1.21.4" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
   helm-ct: "3.10.1" # renovate: depName=helm/chart-testing
-  helm: "3.13.2" # renovate: depName=helm/helm
+  helm: "3.13.3" # renovate: depName=helm/helm
   k9s: "0.28.0" # renovate: depName=derailed/k9s
   krew: "0.4.4" # renovate: depName=kubernetes-sigs/krew
   kubectl: "1.28.4" # renovate: depName=kubernetes/kubectl datasource=github-tags extractVersion=^kubernetes-(?<version>.*)$
