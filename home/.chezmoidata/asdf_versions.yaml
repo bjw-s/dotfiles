@@ -2,7 +2,7 @@ asdf_versions:
   age: "1.1.1" # renovate: depName=FiloSottile/age
   chezmoi: "2.40.4" # renovate: depName=twpayne/chezmoi
   flux2: "2.1.2" # renovate: depName=fluxcd/flux2
-  github-cli: "2.38.0" # renovate: depName=cli/cli
+  github-cli: "2.40.1" # renovate: depName=cli/cli
   golang: "1.21.4" # renovate: depName=golang/go datasource=github-tags extractVersion=^go(?<version>.*)$
   helm-ct: "3.10.1" # renovate: depName=helm/chart-testing
   helm: "3.13.2" # renovate: depName=helm/helm
