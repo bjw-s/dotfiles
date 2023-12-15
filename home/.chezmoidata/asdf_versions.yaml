@@ -19,7 +19,7 @@ asdf_versions:
   starship: "1.16.0" # renovate: depName=starship/starship
   stern: "1.26.0" # renovate: depName=stern/stern
   talhelper: "1.15.0" # renovate: depName=budimanjojo/talhelper
-  talosctl: "1.5.5" # renovate: depName=siderolabs/talos
+  talosctl: "1.6.0" # renovate: depName=siderolabs/talos
   task: "3.31.0" # renovate: depName=go-task/task
   terraform: "1.6.2" # renovate: depName=hashicorp/terraform
   tfctl: "0.14.0" # renovate: depName=weaveworks/tf-controller
