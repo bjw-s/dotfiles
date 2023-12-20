@@ -1,15 +1,5 @@
 # Dotfiles
 
+**NOTE**: _This repository is currently no longer supported or updated by me as I've moved to a `nix` based configuration. This can be found over at https://github.com/bjw-s/nix-config._
+
 This is my dotfiles repo. There are many like it, but this one is mine 😅
-
-## Tools
-
-I manage my system/dotfiles through Chezmoi:
-
-- Chezmoi is used to install packages and manage configuration files
-
-## Installation Flow
-
-```
-curl https://raw.githubusercontent.com/bjw-s/dotfiles/main/setup.sh | bash
-```
